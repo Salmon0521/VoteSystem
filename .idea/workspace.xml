@@ -6,61 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AgreementBallot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AgreementBallots.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AssessmentBallot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AssessmentBallots.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/Ballots.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/RankBallot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/RankBallots.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/controller/VotingController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/service/VoteService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/util/Utility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/css/loading.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/css/site.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/ExampleFileIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/ExampleFileIcon_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/AgreementBallot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/AssessmentBallot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/File.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/RankBallot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/Streamer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/Viewer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/VoteIndex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/VoteManage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ManageBallot.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/MeetingFooter.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ShareFile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Streamer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ViewFile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Viewer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/VoteHeader.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/VoteIndex.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/template/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/AgreementBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AgreementBallots.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/AssessmentBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AssessmentBallots.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/RankBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/RankBallots.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/SharingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/SharingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/VotingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/VotingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VoteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Utility.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -94,22 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "jdk.selected.JAVA_MODULE": "1.8 (2)",
-    "last_opened_file_path": "D:/OOAD/VoteSystem/src/main/webapp/WEB-INF",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8 (2)&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OOAD/VoteSystem/src/main/webapp/WEB-INF&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model" />
@@ -158,9 +115,6 @@
       <predefined_log_file id="Tomcat Host Manager Log" />
       <option name="contextPath" value="/web-meeting-java" />
       <option name="docBase" value="D:\OOAD\VoteSystem\src\main\webapp\WEB-INF" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
@@ -192,8 +146,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668753414087</updated>
+      <workItem from="1682337638841" duration="5762000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
