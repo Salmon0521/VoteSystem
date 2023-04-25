@@ -5,13 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Model/RankBallotsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/AgreementBallots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/AgreementBallots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/AssessmentBallots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/AssessmentBallots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Ballots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Ballots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/RankBallot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/RankBallot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/RankBallots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/RankBallots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AgreementBallot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AgreementBallots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AssessmentBallot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/AssessmentBallots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/Ballots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/RankBallot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/Model/RankBallots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/controller/VotingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/service/VoteService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/util/Utility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/css/loading.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/ExampleFileIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/ExampleFileIcon_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/AgreementBallot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/AssessmentBallot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/File.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/RankBallot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/Streamer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/Viewer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/VoteIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/js/VoteManage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ManageBallot.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/MeetingFooter.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ShareFile.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Streamer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/ViewFile.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/Viewer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/VoteHeader.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/view/VoteIndex.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/template/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +102,8 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "jdk.selected.JAVA_MODULE": "1.8 (2)",
-    "last_opened_file_path": "D:/web-meeting-java",
+    "last_opened_file_path": "D:/OOAD/VoteSystem/src/main/webapp/WEB-INF",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -83,7 +133,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RankBallotsTest.updateBallot">
+  <component name="RunManager" selected="Smart Tomcat.server">
     <configuration name="RankBallotsTest.updateBallot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="web-meeting-java" />
       <extension name="coverage">
@@ -106,12 +156,16 @@
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="contextPath" value="" />
-      <option name="docBase" value="D:\MeetingSystem_JAVA\web" />
+      <option name="contextPath" value="/web-meeting-java" />
+      <option name="docBase" value="D:\OOAD\VoteSystem\src\main\webapp\WEB-INF" />
+      <option name="envOptions">
+        <map />
+      </option>
+      <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
           <option name="name" value="Apache Tomcat/8.5.70" />
-          <option name="path" value="$PROJECT_DIR$/../apache-tomcat-8.5.70" />
+          <option name="path" value="$PROJECT_DIR$/../../apache-tomcat-8.5.70" />
           <option name="version" value="8.5.70.0" />
         </TomcatInfo>
       </option>
@@ -120,6 +174,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.RankBallotsTest.updateBallot" />
+      <item itemvalue="Smart Tomcat.server" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.RankBallotsTest.updateBallot" />
