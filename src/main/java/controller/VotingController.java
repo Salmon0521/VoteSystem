@@ -23,9 +23,9 @@ import java.net.URLEncoder;
 import java.util.*;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import util.Utility;
 
 
+/*
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Admin", "/Participant", "/EditMeeting", "/Invoicing",
@@ -267,4 +267,4 @@ public class VotingController extends HttpServlet {
             System.out.println(e);
         }
     }
-}
+}*/

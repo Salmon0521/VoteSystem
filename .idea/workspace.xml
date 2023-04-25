@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/BallotsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +84,48 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Smart Tomcat.server">
+  <component name="RunManager" selected="JUnit.BallotsTest">
+    <configuration name="BallotsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VoteSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.BallotsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BallotsTest.countBallotsTest_1 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VoteSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BallotsTest" />
+      <option name="METHOD_NAME" value="countBallotsTest_1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BallotsTest.countBallotsTest_1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VoteSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.BallotsTest" />
+      <option name="METHOD_NAME" value="countBallotsTest_1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RankBallotsTest.updateBallot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="web-meeting-java" />
       <extension name="coverage">
@@ -122,11 +164,17 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.BallotsTest" />
+      <item itemvalue="JUnit.BallotsTest.countBallotsTest_1" />
+      <item itemvalue="JUnit.BallotsTest.countBallotsTest_1 (1)" />
       <item itemvalue="JUnit.RankBallotsTest.updateBallot" />
       <item itemvalue="Smart Tomcat.server" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BallotsTest" />
+        <item itemvalue="JUnit.BallotsTest.countBallotsTest_1" />
+        <item itemvalue="JUnit.BallotsTest.countBallotsTest_1 (1)" />
         <item itemvalue="JUnit.RankBallotsTest.updateBallot" />
       </list>
     </recent_temporary>
