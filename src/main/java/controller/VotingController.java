@@ -2,7 +2,7 @@ package controller;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import service.VoteService;
+import service.VoteActivity;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -28,14 +28,14 @@ import util.Utility;
 
 @WebServlet(
         name = "VotingController",
-        urlPatterns = {"/Admin", "/Participant", "/CreateMeeting", "/EditMeeting", "/Invoicing",
-                "/InvoicingTwo", "/Vote", "/Upload", "/UploadAndStatistic", "/index", "/Reset",
+        urlPatterns = {"/Admin", "/Participant", "/EditMeeting", "/Invoicing",
+                "/Vote", "/Upload", "/UploadAndStatistic", "/index", "/Reset",
                 "/VoteIndex", "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
 
-    VoteService service = new VoteService();
+    VoteActivity service = new VoteActivity();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
@@ -59,10 +59,10 @@ public class VotingController extends HttpServlet {
                 request.setAttribute("status", status);
                 request.setAttribute("meetingType", meetingType);
                 request.setAttribute("title", title);
-                request.getRequestDispatcher("/WEB-INF/jsp/view/ManageBallot.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/view/ManageBallot.jsp").forward(request, response);
                 break;
             case "index":
-                request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/view/Index.jsp").forward(request, response);
                 break;
             case "VoteIndex":
                 Object sessionUserUUID = request.getSession().getAttribute("userUUID");
@@ -74,7 +74,7 @@ public class VotingController extends HttpServlet {
                     userUUID = sessionUserUUID.toString();
                 }
                 request.setAttribute("userUUID", userUUID);
-                request.getRequestDispatcher("/WEB-INF/jsp/view/VoteIndex.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/view/VoteIndex.jsp").forward(request, response);
                 break;
             case "VoteBallot":
                 PrintWriter out = response.getWriter();
@@ -87,18 +87,18 @@ public class VotingController extends HttpServlet {
                     } else if (!service.checkVotingUUID(request.getSession().getAttribute(meetingType), meetingType)) {
                         out.print("2");
                     } else {
-                        out.print("BallotPage?MeetingType="+meetingType);
+                        out.print("/BallotPage?MeetingType="+meetingType);
                     }
                 }
                 out.flush();
                 break;
             case "BallotPage":
-                String jspPath = "WEB-INF/template/" + meetingType + "/" + meetingType.toLowerCase() + "File.jsp";
+                String jspPath = "template/" + meetingType + "/" + meetingType.toLowerCase() + "File.jsp";
                 File ballotJsp = new File(servletPath + jspPath);
                 if (ballotJsp.exists()) {
-                    request.getRequestDispatcher("/" + jspPath).forward(request, response);
+                    request.getRequestDispatcher(jspPath).forward(request, response);
                 } else {
-                    response.sendRedirect("VoteIndex?reset=reset");
+                    response.sendRedirect("/VoteIndex?reset=reset");
                 }
                 break;
             case "Invoicing":
@@ -127,7 +127,7 @@ public class VotingController extends HttpServlet {
 
                 String fileName = service.getExampleFileName(meetingType, Integer.parseInt(request.getParameter("DownloadType")));
                 response.setHeader("Content-Disposition", "attachment;filename*=UTF-8''" + URLEncoder.encode(fileName, "UTF-8"));
-                filePath = servletPath + meetingType + "/" + fileName;
+                filePath = servletPath + "../../" + meetingType + "/" + fileName;
 
                 XSSFWorkbook ballotWb;
                 try {
@@ -154,7 +154,7 @@ public class VotingController extends HttpServlet {
                 String downloadType = request.getParameter("DownloadType");
                 try {
                     XSSFWorkbook workbook = service.Invoicing(meetingType).get(Integer.parseInt(downloadType));
-                    out.print("Invoicing?MeetingType=" + meetingType + "&DownloadType=" + downloadType);
+                    out.print("/Invoicing?MeetingType=" + meetingType + "&DownloadType=" + downloadType);
                 } catch (Exception e) {
                     e.printStackTrace();
                     out.print("1");
@@ -195,7 +195,7 @@ public class VotingController extends HttpServlet {
                 break;
             case "Upload":
                 String servletPath = getServletContext().getRealPath("/");
-                String savePath = servletPath + "WEB-INF/template/" + meetingType + "/";
+                String savePath = servletPath + "template/" + meetingType + "/";
 
                 Utility.makeTemplateDir(servletPath);
                 clearTemplateDir(servletPath, meetingType);
@@ -205,9 +205,8 @@ public class VotingController extends HttpServlet {
                 try {
                     for (Part part : request.getParts()) {
                         if (part.getContentType() != null) {
-                            String SubmittedFileName = part.getSubmittedFileName().replace(" ", "");
-                            pathList.add(SubmittedFileName);
-                            part.write(savePath + SubmittedFileName);
+                            pathList.add(part.getSubmittedFileName());
+                            part.write(savePath + part.getSubmittedFileName());
                         }
                     }
                 } catch (Exception e) {
@@ -247,7 +246,7 @@ public class VotingController extends HttpServlet {
     }
 
     private void clearTemplateDir(String servletPath, String meetingType) {
-        String savePath = servletPath + "WEB-INF/template/" + meetingType + "/";
+        String savePath = servletPath + "template/" + meetingType + "/";
         File rankDir = new File(savePath);
         File[] files = rankDir.listFiles();
         if (files != null) {
@@ -259,7 +258,7 @@ public class VotingController extends HttpServlet {
             
     private void sendCountToSocket(String meetingType, int count){
         try {
-            Socket socket = IO.socket("http://192.168.0.124:8088");
+            Socket socket = IO.socket("http://localhost:8088");
             socket.on("updateVoteMsg",objects -> System.out.println("SocketIO: " + objects[0].toString() + ", " + objects[1].toString()));
             socket.connect();
             socket.emit("updateVoteMsg", meetingType, count);

@@ -5,7 +5,7 @@ import util.Utility;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class AgreementBallot {
+public class AgreementBallot {/*
     private String userUUID = "";
     private List<LinkedHashMap<String, String>> approvalIssueList;
 
@@ -22,5 +22,5 @@ public class AgreementBallot {
 
     public void setApprovalIssueList(List<LinkedHashMap<String, String>> approvalIssueList) {
         this.approvalIssueList = approvalIssueList;
-    }
+    }*/
 }

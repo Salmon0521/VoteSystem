@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(
         name = "SharingController",
@@ -23,32 +29,32 @@ public class SharingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
         String servletPath = getServletContext().getRealPath("/");
-        String savePath = servletPath + "WEB-INF/template/Download/";
+        String savePath = servletPath + "template/Download/";
         File rankDir = new File(savePath);
         File[] files = rankDir.listFiles();
         String filename = request.getParameter("Filename");
-        String fileNameList = "";
+        List<String> fileNameList = new ArrayList<>();
 
         switch (path) {
             case "ShareScreen":
-                request.getRequestDispatcher("/WEB-INF/jsp/view/Streamer.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/view/Streamer.jsp").forward(request, response);
                 break;
             case "ViewScreen":
-                request.getRequestDispatcher("/WEB-INF/jsp/view/Viewer.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/view/Viewer.jsp").forward(request, response);
                 break;
             case "ShareFile":
             case "ViewFile":
                 if (files != null) {
                     for (File file : files) {
-                        fileNameList += "," + file.getName() ;
+                        fileNameList.add(file.getName());
                     }
                 }
 
                 request.setAttribute("fileNameList", fileNameList);
                 if("ShareFile".equals(path)){
-                    request.getRequestDispatcher("/WEB-INF/jsp/view/ShareFile.jsp").forward(request, response);
+                    request.getRequestDispatcher("jsp/view/ShareFile.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("/WEB-INF/jsp/view/ViewFile.jsp").forward(request, response);
+                    request.getRequestDispatcher("jsp/view/ViewFile.jsp").forward(request, response);
                 }
 
                 break;
@@ -76,7 +82,7 @@ public class SharingController extends HttpServlet {
                         }
                     }
                 }
-                response.sendRedirect("ShareFile");
+                response.sendRedirect("/ShareFile");
                 break;
             case "ResetFileList":
                 if (files != null) {
@@ -85,7 +91,7 @@ public class SharingController extends HttpServlet {
                     }
                 }
 
-                response.sendRedirect("ShareFile");
+                response.sendRedirect("/ShareFile");
                 break;
         }
     }
@@ -99,15 +105,15 @@ public class SharingController extends HttpServlet {
             case "UploadShareFile":
                 String servletPath = getServletContext().getRealPath("/");
                 Utility.makeTemplateDir(servletPath, "Download");
-                String savePath = servletPath + "WEB-INF/template/Download/";
+                String savePath = servletPath + "template/Download/";
 
                 for (Part part : request.getParts()) {
                     if (part.getContentType() != null){
-                        part.write(savePath + part.getSubmittedFileName().replace(" ", ""));
+                        part.write(savePath + part.getSubmittedFileName());
                     }
                 }
 
-                response.sendRedirect("ShareFile");
+                response.sendRedirect("/ShareFile");
                 break;
         }
     }

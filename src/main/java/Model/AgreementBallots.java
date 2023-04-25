@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.io.*;
 import java.util.*;
 
-public class AgreementBallots extends Ballots {
+public class AgreementBallots {/*
     private List<AgreementBallot> ballotList = new ArrayList<>();
 
     public AgreementBallots(){
@@ -260,12 +260,12 @@ public class AgreementBallots extends Ballots {
             buttonElement.attr("onclick", "sendBallot()");
             buttonElement.text("送出選票");
 
-            html.select("head").first().appendElement("script").attr("src", "lib/jquery.min.js");
-            html.select("head").first().appendElement("script").attr("src", "js/AgreementBallot.js");
+            html.select("head").first().appendElement("script").attr("src", "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+            html.select("head").first().appendElement("script").attr("src", "../../js/AgreementBallot.js");
             html.select("head").first().appendElement("meta").attr("charset", "utf-8");
 
-            String includeHead = "<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" %><jsp:include page=\"/WEB-INF/jsp/view/VoteHeader.jsp\" />";
-            String includeFoot = "<jsp:include page=\"/WEB-INF/jsp/view/MeetingFooter.jsp\" />";
+            String includeHead = "<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" %><jsp:include page=\"../../jsp/view/VoteHeader.jsp\" />";
+            String includeFoot = "<jsp:include page=\"../../jsp/view/MeetingFooter.jsp\" />";
             String combineJSP = includeHead + html.toString() + includeFoot;
 
             FileWriter writer=new FileWriter(htmlPath);
@@ -279,5 +279,5 @@ public class AgreementBallots extends Ballots {
 
     public List<AgreementBallot> getBallotList() {
         return ballotList;
-    }
+    }*/
 }
