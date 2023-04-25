@@ -5,14 +5,92 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/web_meeting_java.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/AgreementBallot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/AgreementBallots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/AssessmentBallot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/AssessmentBallots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Ballots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/RankBallot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/RankBallots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SharingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/VotingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/VoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Utility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Agreement/同意票_各別結果檔參考.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Agreement/同意票_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Agreement/同意票_選票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_兼任副教授_投票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_兼任副教授_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_兼任教授_投票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_兼任教授_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_副教授_投票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_副教授_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_教授_投票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Assessment/升等評分_教授_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_各別結果檔參考.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_結果檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_選票檔.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/Header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/Index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/ManageBallot.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/MeetingFooter.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/ShareFile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/Streamer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/ViewFile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/Viewer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/VoteHeader.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/VoteIndex.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/loading.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/ExampleFileIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/ExampleFileIcon_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/AgreementBallot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/AssessmentBallot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/ManageFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/RankBallot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/ShowFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/Streamer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/Viewer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/VoteIndex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/VoteManage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/adapter-latest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/bootstrap/dist/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/socket.io.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/RankBallotsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/AgreementBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AgreementBallots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/AssessmentBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AssessmentBallots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/RankBallots.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/RankBallots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/SharingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/SharingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/VotingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/VotingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/VoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VoteService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Utility.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,27 +124,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8 (2)&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OOAD/VoteSystem/src/main/webapp/WEB-INF&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "jdk.selected.JAVA_MODULE": "1.8 (2)",
+    "last_opened_file_path": "D:/OOAD/VoteSystem/src/main/webapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.37241378",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model" />
@@ -114,7 +192,10 @@
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
       <option name="contextPath" value="/web-meeting-java" />
-      <option name="docBase" value="D:\OOAD\VoteSystem\src\main\webapp\WEB-INF" />
+      <option name="docBase" value="D:\OOAD\VoteSystem\src\main\webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
@@ -147,6 +228,8 @@
       <option name="presentableId" value="Default" />
       <updated>1668753414087</updated>
       <workItem from="1682337638841" duration="5762000" />
+      <workItem from="1682408859779" duration="672000" />
+      <workItem from="1682410733811" duration="298000" />
     </task>
     <servers />
   </component>
