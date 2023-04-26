@@ -1,7 +1,6 @@
 package service;
 
 import Model.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.util.*;
@@ -22,8 +21,7 @@ public class VoteActivity {
     }
 
     public String vote(String voteData) {
-        ballots.addBallot(voteData);
-        return null;
+        return ballots.addBallot(voteData);
     }
 
     public void reviseCandidate(List<Map<String, String>> candidateData) {

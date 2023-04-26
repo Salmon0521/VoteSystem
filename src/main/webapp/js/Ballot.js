@@ -1,6 +1,5 @@
 function sendBallot() {
-    var VoteData = 0;
-    var i = 0;
+    let VoteData = 0;
     let total = 0;
     let count = 0;
     $("input").each(function() {
@@ -11,7 +10,7 @@ function sendBallot() {
         }
     });
 
-    console.log(JSON.stringify(VoteData));
+    console.log(VoteData);
 
     if (count*2 == total) {
         let reset = confirm("確定送出選票？");
@@ -23,15 +22,16 @@ function sendBallot() {
                     "VoteData": VoteData,
                 },
                 success: function (data) {
-                    window.location.href = "VoteIndex";
+                    alert("投票成功!");
+                    window.location.href = "Index";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    /*if (jqXHR.status === 400) {
+                    if (jqXHR.status === 400) {
                         alert("已完成投票，無法重複投票!");
                     } else if (jqXHR.status === 500) {
                         alert("已開票，故無法投票!");
                     }
-                    window.location.href = "VoteIndex";*/
+                    window.location.href = "Index";
                 }
             });
         }
