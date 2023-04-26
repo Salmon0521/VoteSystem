@@ -1,5 +1,6 @@
 package controller;
 
+import service.LoginService;
 import service.VoteActivity;
 
 import javax.servlet.ServletException;
@@ -27,17 +28,22 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Admin", "/Participant", "/EditMeeting", "/Invoicing",
-                "/Vote", "/Upload", "/UploadAndStatistic", "/index", "/Reset",
-                "/VoteIndex", "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
+                "/Vote", "/Upload", "/UploadAndStatistic", "/AdminIndex", "/Reset",
+                "/Index", "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
 
+    LoginService loginService = new LoginService();
     VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
         String servletPath = getServletContext().getRealPath("/");
         switch (path) {
+            case "Login":
+                loginService.
+                request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
+                break;
             case "AdminIndex":
                 request.getRequestDispatcher("/WEB-INF/jsp/view/AdminIndex.jsp").forward(request, response);
                 break;
@@ -73,12 +79,8 @@ public class VotingController extends HttpServlet {
 
         switch (path) {
             case "Vote":
-                //String userUUID = request.getSession().getAttribute("userUUID").toString();
-                String userUUID = "000";
-
                 String VoteData = request.getParameter("VoteData");
-                voteActivity.vote(VoteData);
-
+                String ballotUUID = voteActivity.vote(VoteData);
                 break;
         }
     }
