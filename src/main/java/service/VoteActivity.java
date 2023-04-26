@@ -21,7 +21,8 @@ public class VoteActivity {
 
     }
 
-    public String vote(Map<String, String> candidateData) {
+    public String vote(String voteData) {
+        ballots.addBallot(voteData);
         return null;
     }
 

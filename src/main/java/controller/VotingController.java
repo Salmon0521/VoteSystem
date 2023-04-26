@@ -1,7 +1,5 @@
 package controller;
 
-import io.socket.client.IO;
-import io.socket.client.Socket;
 import service.VoteActivity;
 
 import javax.servlet.ServletException;
@@ -25,7 +23,7 @@ import java.util.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
-/*
+
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Admin", "/Participant", "/EditMeeting", "/Invoicing",
@@ -35,9 +33,56 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 @MultipartConfig
 public class VotingController extends HttpServlet {
 
-    VoteActivity service = new VoteActivity();
-
+    VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getServletPath().replace("/", "");
+        String servletPath = getServletContext().getRealPath("/");
+        switch (path) {
+            case "AdminIndex":
+                request.getRequestDispatcher("/WEB-INF/jsp/view/AdminIndex.jsp").forward(request, response);
+                break;
+            case "Index":
+                request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
+                break;
+            case "VoteBallot":
+                /*
+                PrintWriter out = response.getWriter();
+                fileNames = service.checkUpload(meetingType);
+                if (fileNames[0].length() == 0) {
+                    out.print("0");
+                } else {
+                    if (!service.checkVotingStatus(meetingType)) {
+                        out.print("1");
+                    } else if (!service.checkVotingUUID(request.getSession().getAttribute(meetingType), meetingType)) {
+                        out.print("2");
+                    } else {
+                        out.print("/BallotPage?MeetingType="+meetingType);
+                    }
+                }
+                out.flush();*/
+                break;
+            case "BallotPage":
+                request.getRequestDispatcher("/WEB-INF/jsp/view/Ballot.jsp").forward(request, response);
+                break;
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getServletPath().replace("/", "");
+        PrintWriter out = response.getWriter();
+
+        switch (path) {
+            case "Vote":
+                //String userUUID = request.getSession().getAttribute("userUUID").toString();
+                String userUUID = "000";
+
+                String VoteData = request.getParameter("VoteData");
+                voteActivity.vote(VoteData);
+
+                break;
+        }
+    }
+    /*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
         String meetingType = request.getParameter("MeetingType");
         String[] fileNames;
@@ -266,5 +311,5 @@ public class VotingController extends HttpServlet {
             e.printStackTrace();
             System.out.println(e);
         }
-    }
-}*/
+    }*/
+}

@@ -7,8 +7,8 @@ import java.util.Map;
 public class Ballots {
     private List<Ballot> ballotList = new ArrayList<>();
 
-    public String addBallot(Map<String, String> ballotData) {
-        Ballot ballot = new Ballot(ballotData.get("candidateId"));
+    public String addBallot(String ballotData) {
+        Ballot ballot = new Ballot(ballotData);
         ballotList.add(ballot);
         return ballot.getUUID();
     }
