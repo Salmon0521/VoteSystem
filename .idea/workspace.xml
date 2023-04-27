@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VotingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VotingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VoteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VoteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_各別結果檔參考.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_結果檔.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Rank/序位投票_選票檔.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Ballot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Ballot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Model/BallotsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Model/BallotsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/User/Admin.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/User/Paticipant.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +58,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.37241378",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -216,32 +210,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/LoginService.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/LoginService.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/LoginService.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/LoginService.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

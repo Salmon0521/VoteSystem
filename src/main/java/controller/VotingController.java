@@ -41,7 +41,7 @@ public class VotingController extends HttpServlet {
         String servletPath = getServletContext().getRealPath("/");
         switch (path) {
             case "Login":
-                loginService.
+
                 request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
                 break;
             case "AdminIndex":
