@@ -6,5 +6,6 @@ public class Participant extends User{
     public Participant(String account, String password) {
         this.account = account;
         this.password = password;
+        this.privilege = 0;
     }
 }

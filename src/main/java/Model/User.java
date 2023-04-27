@@ -5,6 +5,8 @@ public abstract class User {
     protected String password="";
     protected String email="";
 
+    protected int privilege = 0;
+
     public String getAccount() {
         return account;
     }

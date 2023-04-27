@@ -1,5 +1,6 @@
 package service;
 
+import Model.Participant;
 import Model.User;
 
 import java.io.BufferedReader;
@@ -13,19 +14,17 @@ public class LoginService {
     List<User> users = new ArrayList();
 
     public LoginService() {
-        Path path = Paths.get("");
-        String directoryName = path.toAbsolutePath().toString();
-        System.out.println("Current Working Directory is = " +directoryName);
         try
         {
             String line = "";
             final String delimiter = ",";
-            String filePath = "D:\\OOAD\\VoteSystem\\src\\main\\resources\\user/Paticipant.csv";
-            FileReader fileReader = new FileReader(filePath);
+            String filePath = this.getClass().getResource("/").getPath();
+            FileReader fileReader = new FileReader(filePath+"/user/Paticipant.csv");
 
             BufferedReader reader = new BufferedReader(fileReader);
             while ((line = reader.readLine()) != null)   //loops through every line until null found
             {
+                User user = new Participant();
                 String[] token = line.split(delimiter);    // separate every token by comma
                 System.out.println(token[0] + " | "+ token[1]+ " | "+ token[2]+ " | "+ token[3]);
             }
@@ -33,9 +32,7 @@ public class LoginService {
         catch (IOException e)
         {
             e.printStackTrace();
-        }/*
-        users.add(new User("admin", "admin"));
-        users.add(new User("user", "user"));*/
+        }
     }
 
     public boolean login(String username, String password) {
