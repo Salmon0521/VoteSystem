@@ -20,7 +20,7 @@
                 <input id="candidate0" type="radio" value="0" name="radioBox">
             </td>
             <td>
-                <img src="images/1.jpg" width="100" height="100">
+                <img src="img/candidate.png" width="100" height="100">
                 <br>候選人1
             </td>
             <td>候選人1簡介</td>
@@ -29,7 +29,7 @@
             <td>
                 <input id="candidate0" type="radio" value="1" name="radioBox">
             </td>
-            <td><img src="images/2.jpg" width="100" height="100">
+            <td><img src="img/candidate.png" width="100" height="100">
                 <br>候選人2
             </td>
             <td>候選人2簡介</td>

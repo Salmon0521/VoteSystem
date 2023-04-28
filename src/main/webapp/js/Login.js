@@ -1,5 +1,4 @@
 function login() {
-
     let account = $("#account").val();
     let password = $("#password").val();
 
