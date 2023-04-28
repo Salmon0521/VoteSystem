@@ -10,7 +10,17 @@
         <script src="lib/jquery.min.js"></script>
         <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-</html>
+    <body>
+        <header>
+                <div class="container">
+                    <a href="Index">投票系統</a>
+                    <div>
+                        ${sessionScope.account}
+                        <a href="Logout">登出</a>
+                    </div>
+                </div>
+        </header>
+
 
 
 

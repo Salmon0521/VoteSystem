@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>
-                <input id="candidate0" type="radio" value="1" name="radioBox">
+                <input id="candidate1" type="radio" value="1" name="radioBox">
             </td>
             <td><img src="img/candidate.png" width="100" height="100">
                 <br>候選人2

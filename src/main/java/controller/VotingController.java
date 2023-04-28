@@ -27,7 +27,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 @WebServlet(
         name = "VotingController",
-        urlPatterns = {"/Login", "/CheckLogin", "/CheckVoting", "/Index", "/AdminIndex", "/Admin", "/Participant", "/Invoicing",
+        urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/AdminIndex", "/Admin", "/Participant", "/Invoicing",
                 "/Vote", "/Upload", "/UploadAndStatistic", "/Reset",
                 "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
 )
@@ -76,6 +76,11 @@ public class VotingController extends HttpServlet {
             case "Login":
                 request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
                 break;
+            case "Logout":
+                request.getSession().removeAttribute("account");
+                request.getSession().removeAttribute("privilege");
+                response.sendRedirect(BASE_URL + "/Login");
+                break;
         }
     }
 
@@ -107,6 +112,8 @@ public class VotingController extends HttpServlet {
             case "Vote":
                 String VoteData = request.getParameter("VoteData");
                 String ballotUUID = voteActivity.vote(VoteData);
+                loginService.setUserUUID((String) request.getSession().getAttribute("account"), ballotUUID);
+                request.getSession().setAttribute("UUID", ballotUUID);
                 break;
         }
     }

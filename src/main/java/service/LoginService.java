@@ -51,14 +51,20 @@ public class LoginService {
         return null;
     }
 
-    public boolean logout(String account, String password) {
-        return true;
-    }
-
     private boolean checkLogin(User user, String account, String password) {
         if (user.getAccount().equals(account) && user.getPassword().equals(password)) {
             return true;
         }
         return false;
+    }
+
+    public void setUserUUID(String account, String uuid) {
+        for (User user : users) {
+            if (user.getAccount().equals(account)) {
+                if (user instanceof Participant) {
+                    ((Participant) user).setBallotUUID(uuid);
+                }
+            }
+        }
     }
 }
