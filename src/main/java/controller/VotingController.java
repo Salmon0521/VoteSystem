@@ -1,28 +1,15 @@
 package controller;
 
-import service.LoginService;
+import service.UserService;
 import service.VoteActivity;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.*;
-
-import com.google.gson.Gson;
-import com.google.common.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.util.*;
-
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 
 
 @WebServlet(
@@ -34,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 @MultipartConfig
 public class VotingController extends HttpServlet {
     private static final String BASE_URL = "/web-meeting-java";
-    LoginService loginService = new LoginService();
+    UserService userService = new UserService();
     VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
@@ -94,7 +81,7 @@ public class VotingController extends HttpServlet {
                 String account = request.getParameter("Account");
                 String password = request.getParameter("Password");
 
-                privilege = loginService.login(account, password);
+                privilege = userService.login(account, password);
                 request.getSession().setAttribute("account", account);
                 request.getSession().setAttribute("privilege", privilege);
                 if (privilege == null) {
@@ -112,7 +99,7 @@ public class VotingController extends HttpServlet {
             case "Vote":
                 String VoteData = request.getParameter("VoteData");
                 String ballotUUID = voteActivity.vote(VoteData);
-                loginService.setUserUUID((String) request.getSession().getAttribute("account"), ballotUUID);
+                userService.setUserUUID((String) request.getSession().getAttribute("account"), ballotUUID);
                 request.getSession().setAttribute("UUID", ballotUUID);
                 break;
         }

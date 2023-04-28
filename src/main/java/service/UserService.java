@@ -7,14 +7,12 @@ import Model.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
-public class LoginService {
+public class UserService {
     List<User> users = new ArrayList();
 
-    public LoginService() {
+    public UserService() {
         try
         {
             String line = "";
