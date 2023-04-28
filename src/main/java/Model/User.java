@@ -7,6 +7,9 @@ public abstract class User {
 
     protected int privilege = 0;
 
+    public int getPrivilege() {
+        return privilege;
+    }
     public String getAccount() {
         return account;
     }
