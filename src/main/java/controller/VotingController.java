@@ -27,28 +27,39 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 @WebServlet(
         name = "VotingController",
-        urlPatterns = {"/Admin", "/Participant", "/EditMeeting", "/Invoicing",
-                "/Vote", "/Upload", "/UploadAndStatistic", "/AdminIndex", "/Reset",
-                "/Index", "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
+        urlPatterns = {"/Login", "/CheckLogin", "/Index", "/AdminIndex", "/Admin", "/Participant", "/Invoicing",
+                "/Vote", "/Upload", "/UploadAndStatistic", "/Reset",
+                "/VoteBallot", "/ChangeStatus", "/GetCount", "/DownloadExampleFiles", "/BallotPage"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
-
+    private static final String BASE_URL = "/web-meeting-java";
     LoginService loginService = new LoginService();
     VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
         String servletPath = getServletContext().getRealPath("/");
-        switch (path) {
-            case "Login":
+        Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
-                request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
-                break;
+        switch (path) {
             case "AdminIndex":
-                request.getRequestDispatcher("/WEB-INF/jsp/view/AdminIndex.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
                 break;
             case "Index":
-                request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
+                try {
+                    if (privilege == 0){
+                        request.getRequestDispatcher("/WEB-INF/jsp/view/ParticipantIndex.jsp").forward(request, response);
+                    }
+                    else if (privilege == 1){
+                        request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
+                    }
+                    else {
+                        response.sendRedirect(BASE_URL + "/Login");
+                    }
+                }
+                catch (Exception e) {
+                    response.sendRedirect(BASE_URL + "/Login");
+                }
                 break;
             case "VoteBallot":
                 /*
@@ -70,6 +81,9 @@ public class VotingController extends HttpServlet {
             case "BallotPage":
                 request.getRequestDispatcher("/WEB-INF/jsp/view/Ballot.jsp").forward(request, response);
                 break;
+            case "Login":
+                request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
+                break;
         }
     }
 
@@ -78,6 +92,17 @@ public class VotingController extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         switch (path) {
+            case "CheckLogin":
+                String account = request.getParameter("Account");
+                String password = request.getParameter("Password");
+
+                Integer privilege = loginService.login(account, password);
+                request.getSession().setAttribute("account", account);
+                request.getSession().setAttribute("privilege", privilege);
+                if (privilege == null) {
+                    out.print("error");
+                }
+                break;
             case "Vote":
                 String VoteData = request.getParameter("VoteData");
                 String ballotUUID = voteActivity.vote(VoteData);

@@ -1,5 +1,6 @@
 package service;
 
+import Model.Admin;
 import Model.Participant;
 import Model.User;
 
@@ -19,14 +20,20 @@ public class LoginService {
             String line = "";
             final String delimiter = ",";
             String filePath = this.getClass().getResource("/").getPath();
-            FileReader fileReader = new FileReader(filePath+"/user/Paticipant.csv");
+            FileReader fileReader = new FileReader(filePath+"/user/User.csv");
 
             BufferedReader reader = new BufferedReader(fileReader);
             while ((line = reader.readLine()) != null)   //loops through every line until null found
             {
-                User user = new Participant();
                 String[] token = line.split(delimiter);    // separate every token by comma
-                System.out.println(token[0] + " | "+ token[1]+ " | "+ token[2]+ " | "+ token[3]);
+                if (token[2].equals("0")) {
+                    User user = new Participant(token[0], token[1], Integer.parseInt(token[2]));
+                    users.add(user);
+                }
+                else if (token[2].equals("1")){
+                    User user = new Admin(token[0], token[1], Integer.parseInt(token[2]));
+                    users.add(user);
+                }
             }
         }
         catch (IOException e)
@@ -35,15 +42,23 @@ public class LoginService {
         }
     }
 
-    public boolean login(String username, String password) {
+    public Integer login(String account, String password) {
+        for (User user : users) {
+            if (checkLogin(user, account, password)) {
+                return user.getPrivilege();
+            }
+        }
+        return null;
+    }
+
+    public boolean logout(String account, String password) {
         return true;
     }
 
-    public boolean logout(String username) {
-        return true;
-    }
-
-    private boolean checkUsername(String username) {
-        return true;
+    private boolean checkLogin(User user, String account, String password) {
+        if (user.getAccount().equals(account) && user.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
     }
 }

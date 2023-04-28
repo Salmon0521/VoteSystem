@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<jsp:include page="Header.jsp" />
 
 <html>
 <head>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-    <script src="lib/jquery.min.js"></script>
     <script src="js/Ballot.js"></script>
 </head>
 

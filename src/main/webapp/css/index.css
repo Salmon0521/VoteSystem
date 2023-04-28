@@ -1,0 +1,10 @@
+.wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.button{
+    padding: 5rem;
+    margin: 2rem;
+}

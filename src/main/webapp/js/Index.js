@@ -1,10 +1,10 @@
 $(function () {
-    $("a.ballots").click(function(e) {
+    $("#vote").click(function(e) {
         $.ajax({
             type : 'GET',
-            url : 'VoteBallot',
+            url : 'BallotPage',
             data : {
-                "MeetingType" : this.id.substring(0, this.id.length-6),
+                "MeetingType" : this.id,
             },
 
             success: function (data) {
