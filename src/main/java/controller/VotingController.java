@@ -56,7 +56,7 @@ public class VotingController extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/jsp/view/Ballot.jsp").forward(request, response);
                 }
                 else {
-                    response.sendRedirect(BASE_URL + "/Index");
+                    response.sendRedirect(BASE_URL + "/Login");
                 }
                 break;
             case "Login":
@@ -98,7 +98,7 @@ public class VotingController extends HttpServlet {
                     out.print("2");
                 }
                 else {
-                    response.sendRedirect(BASE_URL + "/Index");
+                    response.sendRedirect(BASE_URL + "/Login");
                 }
                 break;
             case "Vote":

@@ -13,8 +13,11 @@ function login() {
             success: function (data) {
                 if (data === "error") {
                     alert("帳號密碼錯誤!");
+                    window.location.href = "Login";
                 }
-                window.location.href = "Index";
+                else {
+                    window.location.href = "Index";
+                }
             }
         });
     } else {

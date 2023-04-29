@@ -7,7 +7,7 @@ function logout() {
 
         },
         success: function (data) {
-            window.location.href = "Index";
+            window.location.href = "Login";
         }
     });
 }
