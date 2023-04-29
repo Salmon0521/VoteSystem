@@ -8,3 +8,51 @@
     padding: 5rem;
     margin: 2rem;
 }
+
+.LoginForm {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 30%;
+}
+
+.container.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.background {
+    background-color: #c7d0df;
+}
+
+.fs-label {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+button img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    object-fit: cover;
+
+}
+.button.vote {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  clip-path: circle(50% at 50% 50%);
+}
+
+.vote:hover {
+    transform: translateY(-10px);
+    transition: 0.3s;
+
+}

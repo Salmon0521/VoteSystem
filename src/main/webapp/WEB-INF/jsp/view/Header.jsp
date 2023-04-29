@@ -12,11 +12,14 @@
     </head>
     <body>
         <header>
-                <div class="container">
-                    <a href="Index">投票系統</a>
-                    <div>
-                        ${sessionScope.account}
-                        <a href="Logout">登出</a>
+                <div class="container d-flex py-2 justify-content-between fx-5 align-items-center">
+                    <a href="Index" class="text-decoration-none text-dark fs-label">投票系統</a>
+                    <div class="d-flex align-items-center fs-label">
+                        <div style="margin-right:1rem">
+                            歡迎,
+                            ${sessionScope.account}
+                        </div>
+                        <a href="Logout"><button class="btn btn-dark fs-label">登出</button></a>
                     </div>
                 </div>
         </header>

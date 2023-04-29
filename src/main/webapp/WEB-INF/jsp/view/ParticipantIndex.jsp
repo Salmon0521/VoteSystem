@@ -7,10 +7,16 @@
     <script src="js/Index.js"></script>
 </head>
 
-<body>
+<body class="background">
     <div class="wrap">
-        <button class="button" id="viewBallot" onclick="viewBallot()">投票</button>
-        <button class="button" id="ballotCondition">投票狀況與結果</button>
+        <div>
+            <div class="fs-label text-center">投票</div>
+            <button class="button vote" id="viewBallot" onclick="viewBallot()"><img src="img/vote_2.png"></button>
+        </div>
+        <div>
+            <div class="fs-label text-center">查看投票結果</div>
+            <button class="button vote" id="ballotCondition"><img src="img/report_1.png"><</button>
+        </div>
     </div>
 </body>
 </html>
