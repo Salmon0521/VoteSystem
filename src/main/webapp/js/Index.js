@@ -7,11 +7,9 @@ function viewBallot() {
         },
         success: function (data) {
             if (data === "0") {
-                alert("尚未上傳選票檔!");
+                alert("投票活動尚未舉辦!");
             } else if (data === "1") {
-                alert("已開票，故無法投票!");
-            } else if (data === "2") {
-                alert("已完成投票，故無法重複投票!");
+                alert("已完成投票!");
             } else {
                 window.location.href = "BallotPage";
             }

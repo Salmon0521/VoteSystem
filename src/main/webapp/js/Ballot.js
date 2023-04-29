@@ -27,9 +27,9 @@ function sendBallot() {
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status === 400) {
-                        alert("已完成投票，無法重複投票!");
-                    } else if (jqXHR.status === 500) {
                         alert("已開票，故無法投票!");
+                    } else if (jqXHR.status === 500) {
+                        alert("已完成投票，無法重複投票!");
                     }
                     window.location.href = "Index";
                 }

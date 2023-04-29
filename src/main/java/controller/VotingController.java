@@ -90,8 +90,12 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "CheckVoting":
-                if (privilege == 0) {
-                    out.print("3");
+                if (!voteActivity.checkVoteActivityStatus()) {
+                    out.print("0");
+                } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
+                    out.print("1");
+                } else if (privilege == 0) {
+                    out.print("2");
                 }
                 else {
                     response.sendRedirect(BASE_URL + "/Index");
@@ -101,7 +105,7 @@ public class VotingController extends HttpServlet {
                 if (!voteActivity.checkVoteActivityStatus()) {
                     response.setStatus(400);
                 } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
-                    response.setStatus(450);
+                    response.setStatus(500);
                 } else {
                     String VoteData = request.getParameter("VoteData");
                     String ballotUUID = voteActivity.vote(VoteData);
