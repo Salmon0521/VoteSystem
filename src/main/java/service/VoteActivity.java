@@ -24,6 +24,10 @@ public class VoteActivity {
         return ballots.addBallot(voteData);
     }
 
+    public boolean checkVoteActivityStatus() {
+        return status;
+    }
+
     public void reviseCandidate(List<Map<String, String>> candidateData) {
 
     }

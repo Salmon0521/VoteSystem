@@ -61,8 +61,31 @@ public class UserService {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {
                     ((Participant) user).setBallotUUID(uuid);
+                    ((Participant) user).setVoted(true);
                 }
             }
         }
+    }
+
+    public String getUserUUID(String account) {
+        for (User user : users) {
+            if (user.getAccount().equals(account)) {
+                if (user instanceof Participant) {
+                    return ((Participant) user).getBallotUUID();
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean getVoted(String account) {
+        for (User user : users) {
+            if (user.getAccount().equals(account)) {
+                if (user instanceof Participant) {
+                    return ((Participant) user).getVoted();
+                }
+            }
+        }
+        return false;
     }
 }

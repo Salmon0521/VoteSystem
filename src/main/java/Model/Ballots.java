@@ -7,6 +7,10 @@ import java.util.Map;
 public class Ballots {
     private List<Ballot> ballotList = new ArrayList<>();
 
+    public List<Ballot> getBallots() {
+        return ballotList;
+    }
+
     public String addBallot(String ballotData) {
         Ballot ballot = new Ballot(ballotData);
         ballotList.add(ballot);
