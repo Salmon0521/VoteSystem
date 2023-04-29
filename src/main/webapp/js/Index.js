@@ -16,3 +16,20 @@ function viewBallot() {
         },
     });
 }
+
+function createActivity() {
+    $.ajax({
+        type : 'POST',
+        url : 'CheckVoteActivity',
+        data : {
+
+        },
+        success: function (data) {
+            if (data === "0") {
+                window.location.href = "EditBallot";
+            } else if (data === "1") {
+                window.location.href = "ManageVoteActivity";
+            }
+        },
+    });
+}

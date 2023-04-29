@@ -11,42 +11,10 @@
 <body>
 <table id="candidateTable">
     <tr>
-        <th>候選人姓名</th>
         <th>照片</th>
+        <th>候選人姓名</th>
         <th>候選人簡介</th>
     </tr>
-    <tr id="0">
-            <td>
-                <input id="candidate0" type="radio" value="0" name="radioBox">
-            </td>
-            <td>
-                <img src="img/candidate.png" width="100" height="100">
-                <br>候選人1
-            </td>
-            <td>
-                候選人1簡介
-            </td>
-            <td>
-                <input type="submit" name="delete" value="刪除" onclick="deleteCandidate(0)">
-            </td>
-    </tr>
-    <tr id="1">
-        <td>
-            <input id="candidate1" type="radio" value="1" name="radioBox">
-        </td>
-        <td>
-            <img src="img/candidate.png" width="100" height="100">
-            <br>候選人2
-        </td>
-        <td>
-            候選人2簡介
-        </td>
-        <td>
-            <input type="submit" name="delete" value="刪除" onclick="deleteCandidate(1)">
-        </td>
-    </tr>
-
-
 </table>
 <button type="button" onclick="addCandidate()">新增候選人</button>
 <button type="button" onclick="">建立投票活動</button>

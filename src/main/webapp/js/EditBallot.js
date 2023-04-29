@@ -3,22 +3,43 @@ var addState = false;
 function addCandidate() {
     if (addState === false) {
         addState = true;
-        $("#candidateTable").append("<tr" + "id=\"" + candidateNum + "\">" +
-            "<td align=center>" + "<input type=\"text\" id=\"candidateName" + candidateNum + "\"/></td>" +
-            "<td align=center>" + "<input type=\"file\" name=\"candidateIMG" + candidateNum + "\"/></td>" +
-            "<td align=center>" + "<input type=\"text\" id=\"candidateIntroduction" + candidateNum + "\"/></td>" +
+        $("#candidateTable").append("<tr>"+
+            "<td align=center>" + "<input type=\"file\" name=\"candidateIMG\"/></td>" +
+            "<td align=center>" + "<input type=\"text\" id=\"candidateName\"/></td>" +
+            "<td align=center>" + "<input type=\"text\" id=\"candidateIntroduction\"/></td>" +
             "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"listCandidate()\" value=\"確認\">" + "</td>" +
             "</tr>");
     } else {
         alert("請先完成新增!");
     }
 }
-function listCandidate() {
 
+function listCandidate() {
+    let candidateName = document.getElementById("candidateName").value;
+    let candidateIntroduction = document.getElementById("candidateIntroduction").value;
+    let candidateIMG = document.getElementsByName("candidateIMG")[0].files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(candidateIMG);
+    reader.onload = function () {
+        var candidateIMGBase64 = reader.result;
+        $("#candidateTable").append("<tr id=\"" + candidateNum + "\">" +
+            "<td align=center id=\"candidateIMG" + candidateNum + "\">" + "<img src=\"" + candidateIMGBase64 + "\" width=\"100\" height=\"100\"/>" + "</td>" +
+            "<td align=center id=\"candidateName" + candidateNum + "\">" + candidateName + "</td>" +
+            "<td align=center id=\"candidateIntroduction" + candidateNum + "\">" + candidateIntroduction + "</td>" +
+            "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"deleteCandidate(" + candidateNum + ")\" value=\"刪除\">" + "</td>" +
+            "</tr>");
+        addState = false;
+        candidateNum++;
+    };
+    document.getElementById("candidateName").remove();
+    document.getElementsByName("candidateIMG")[0].remove();
+    document.getElementById("candidateIntroduction").remove();
 }
+
 function deleteCandidate(divIndex) {
     document.getElementById(divIndex).remove();
 }
+
 function showList() {
     $.ajax({
         url : "GetCandidates",
