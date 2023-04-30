@@ -39,6 +39,12 @@ function showList() {
         data: {},
         dataType : "json",
         success : function(response) {
+            $("#candidateTable").append("<tr>" +
+                "<th align=center>候選人照片</th>" +
+                "<th align=center>候選人姓名</th>" +
+                "<th align=center>候選人介紹</th>" +
+                "</tr>"
+            );
             for (let i = 0; i < response.length; i++) {
                 $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\">" +
                     "<td align=center>" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +

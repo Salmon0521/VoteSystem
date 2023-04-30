@@ -10,11 +10,6 @@
 
 <body>
     <table id="candidateTable">
-        <tr>
-            <th>照片</th>
-            <th>候選人姓名</th>
-            <th>候選人簡介</th>
-        </tr>
     </table>
     <form action="AddCandidate" method="POST" encType="multipart/form-data">
         <table id="newCandidateTable">
