@@ -1,11 +1,10 @@
 package Model;
 
-import util.Utility;
-
 import java.util.Date;
+import java.util.UUID;
 
 public class Ballot {
-    private String uuid = "";
+    private UUID uuid = null;
     private String candidateId = "";
     private Date votingTime = null;
 
@@ -18,7 +17,7 @@ public class Ballot {
         return this.uuid.toString();
     }
     public void setUUID() {
-        this.uuid = Utility.generateUUID();
+        this.uuid = UUID.randomUUID();
     }
     public String getCandidateId() {
         return candidateId;

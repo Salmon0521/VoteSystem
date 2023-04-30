@@ -1,25 +1,22 @@
 package Model;
 
-import java.util.Map;
-import java.util.UUID;
-
 public class Candidate {
-    private String uuid = "";
+    private String id = "";
     private String name = "";
     private String introduction = "";
     private String image = "";
 
-    public Candidate(Map<String, String> candidateData) {
-        setUUID(candidateData.get("uuid")) ;
-        setName(candidateData.get("name"));
-        setIntroduction(candidateData.get("introduction"));
-        setImage(candidateData.get("image"));
+    public Candidate(String id, String name, String introduction, String image) {
+        setId(id);
+        setName(name);
+        setIntroduction(introduction);
+        setImage(image);
     }
-    public String getUUID() {
-        return uuid.toString();
+    public String getId() {
+        return id;
     }
-    public void setUUID(String uuid) {
-        this.uuid = uuid;
+    public void setId(String id) {
+        this.id = id;
     }
     public String getName() {
         return name;
