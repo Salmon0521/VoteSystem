@@ -24,7 +24,7 @@ public class VoteActivity {
         return ballots.addBallot(voteData);
     }
 
-    public boolean checkVoteActivityStatus() {
+    public boolean getStatus() {
         return status;
     }
 

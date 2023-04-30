@@ -56,18 +56,18 @@ public class UserService {
         return false;
     }
 
-    public void setUserUUID(String account, String uuid) {
+    public void updateUserVotingStatus(String account, String ballotUUID) {
         for (User user : users) {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {
-                    ((Participant) user).setBallotUUID(uuid);
+                    ((Participant) user).setBallotUUID(ballotUUID);
                     ((Participant) user).setVoted(true);
                 }
             }
         }
     }
 
-    public String getUserUUID(String account) {
+    public String getUserBallotUUID(String account) {
         for (User user : users) {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {

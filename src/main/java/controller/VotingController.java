@@ -19,7 +19,6 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 import util.Utility;
 
@@ -27,7 +26,7 @@ import util.Utility;
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/EditBallot","/CheckVoteActivity",
-                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/AddCandidate","/DeleteCandidate"}
+                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/CreateVoteActivity", "/AddCandidate","/DeleteCandidate"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -102,7 +101,7 @@ public class VotingController extends HttpServlet {
                 String password = request.getParameter("Password");
 
                 privilege = userService.login(account, password);
-                String UUID = userService.getUserUUID(account);
+                String UUID = userService.getUserBallotUUID(account);
 
                 request.getSession().setAttribute("account", account);
                 request.getSession().setAttribute("privilege", privilege);
@@ -113,7 +112,7 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "CheckVoting":
-                if (!voteActivity.checkVoteActivityStatus()) {
+                if (!voteActivity.getStatus()) {
                     out.print("0");
                 } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
                     out.print("1");
@@ -125,21 +124,30 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "CheckVoteActivity":
-                if (!voteActivity.checkVoteActivityStatus()) {
+                if (!voteActivity.getStatus()) {
                     out.print("0");
                 } else {
                     out.print("1");
                 }
                 break;
+            case "CreateVoteActivity":
+               /* String voteActivityName = request.getParameter("voteActivityName");
+                String voteActivityIntroduction = request.getParameter("voteActivityIntroduction");
+                String voteActivityStartTime = request.getParameter("voteActivityStartTime");
+                String voteActivityEndTime = request.getParameter("voteActivityEndTime");
+                String voteActivityStatus = request.getParameter("voteActivityStatus");
+
+                voteActivity.createVoteActivity(voteActivityName, voteActivityIntroduction, voteActivityStartTime, voteActivityEndTime, voteActivityStatus);*/
+                break;
             case "Vote":
-                if (!voteActivity.checkVoteActivityStatus()) {
+                if (!voteActivity.getStatus()) {
                     response.setStatus(400);
                 } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
                     response.setStatus(500);
                 } else {
                     String VoteData = request.getParameter("VoteData");
                     String ballotUUID = voteActivity.vote(VoteData);
-                    userService.setUserUUID((String) request.getSession().getAttribute("account"), ballotUUID);
+                    userService.updateUserVotingStatus((String) request.getSession().getAttribute("account"), ballotUUID);
                     request.getSession().setAttribute("UUID", ballotUUID);
                 }
                 break;
