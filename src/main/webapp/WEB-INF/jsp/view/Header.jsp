@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-                <div class="container d-flex py-2 justify-content-between fx-5 align-items-center">
+                <div class="container d-flex py-2 justify-content-between align-items-center">
                     <a href="Index" class="text-decoration-none text-dark fs-label">投票系統</a>
                     <div class="d-flex align-items-center fs-label">
                         <div style="margin-right:1rem">
