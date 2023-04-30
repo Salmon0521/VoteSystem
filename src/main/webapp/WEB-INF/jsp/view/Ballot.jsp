@@ -9,50 +9,72 @@
     <link rel="stylesheet" href="css/index.css" />
 </head>
 
-<body>
-        <div class="container">
-        <table class="table">
-            <tr>
-                <th>勾選：</th>
-                <th>候選人：</th>
-            </tr>
-            <tr>
-                <td>
-                    <input id="candidate0" type="radio" value="0" name="radioBox">
-                </td>
-                <td>
-                    <!-- Card Flip -->
-                    <div class="card-flip">
-                        <div class="flip">
-                            <div class="front">
-                                <!-- front content -->
-                                <div class="card cardSize">
-                                    <img src="img/dragon.png"/>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <!-- back content -->
-                                <div class="card">
-                                  卡片背面
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Card Flip -->
-                    <br>候選人1
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input id="candidate1" type="radio" value="1" name="radioBox">
-                </td>
-                <td><img src="img/candidate.png" width="100" height="100">
-                    <br>候選人2
-                </td>
-            </tr>
-        </table>
-            <button type="button" onclick="sendBallot()" class="btn btn-danger fs-label">送出選票</button>
-        </div>
-    <script>document.querySelector(".card-flip").classList.toggle("flip");</script>
-    </body>
+ <body class="background">
+    <div class="container d-flex align-items-center flex-column mb-5">
+      <table class="table">
+        <tr class="row text-center">
+          <th class="col">勾選：</th>
+          <th class="col">候選人：</th>
+        </tr>
+        <tr class="row">
+          <td class="col d-flex justify-content-center">
+            <input id="candidate0" type="radio" value="0" name="radioBox" class="ballotInput"/>
+          </td>
+          <td class="col d-flex flex-column align-itmes-center text-center">
+            <!-- Card Flip -->
+            <div class="card-flip">
+              <div class="flip">
+                <div class="front d-flex justify-content-center">
+                  <!-- front content -->
+                  <div class="card cardSize">
+                    <img src="img/dragon.png" />
+                  </div>
+                </div>
+                <div class="back d-flex justify-content-center">
+                  <!-- back content -->
+                  <div class="card cardSize">候選人簡介</div>
+                </div>
+              </div>
+            </div>
+            <!-- End Card Flip -->
+            <br />候選人1
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="col d-flex justify-content-center">
+            <input id="candidate0" type="radio" value="1" name="radioBox" class="ballotInput"/>
+          </td>
+          <td class="col d-flex flex-column align-itmes-center text-center">
+            <!-- Card Flip -->
+            <div class="card-flip">
+              <div class="flip">
+                <div class="front d-flex justify-content-center">
+                  <!-- front content -->
+                  <div class="card cardSize">
+                    <img src="img/turtle.png" />
+                  </div>
+                </div>
+                <div class="back d-flex justify-content-center">
+                  <!-- back content -->
+                  <div class="card cardSize">候選人簡介</div>
+                </div>
+              </div>
+            </div>
+            <!-- End Card Flip -->
+            <br />候選人2
+          </td>
+        </tr>
+      </table>
+      <button
+        type="button"
+        onclick="sendBallot()"
+        class="btn btn-danger fs-label"
+      >
+        送出選票
+      </button>
+    </div>
+    <script>
+      document.querySelector(".card-flip").classList.toggle("flip");
+    </script>
+  </body>
 </html>
