@@ -11,11 +11,11 @@
     <div class="wrap">
         <div>
             <div class="fs-label text-center">投票</div>
-            <button class="button vote" id="viewBallot" onclick="viewBallot()"><img src="img/vote_2.png"></button>
+            <button class="button vote" id="viewBallot" onclick="viewBallot()"></button>
         </div>
         <div>
             <div class="fs-label text-center">查看投票結果</div>
-            <button class="button vote" id="ballotCondition"><img src="img/report_1.png"><</button>
+            <button class="button report" id="ballotCondition"></button>
         </div>
     </div>
 </body>
