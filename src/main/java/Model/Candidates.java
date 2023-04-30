@@ -7,20 +7,21 @@ import java.util.Map;
 public class Candidates {
     private List<Candidate> candidateList = new ArrayList<>();
 
-    public void updateCandidate(List<Map<String, String>> candidateData) {
-        deleteCandidate();
-        for (Map<String, String> candidate : candidateData) {
-            addCandidate(candidate);
-        }
+    public List<Candidate> getCandidates() {
+        return candidateList;
     }
 
     public void addCandidate(Map<String, String> candidateData) {
-        Candidate candidate = new Candidate(candidateData.get("id"), candidateData.get("name"), candidateData.get("introduction"), candidateData.get("image"));
+        Candidate candidate = new Candidate(candidateData);
         candidateList.add(candidate);
     }
 
-    public void deleteCandidate() {
-        candidateList.clear();
+    public void deleteCandidate(String candidateUUID) {
+        for (Candidate candidate : candidateList) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                candidateList.remove(candidate);
+                break;
+            }
+        }
     }
-
 }
