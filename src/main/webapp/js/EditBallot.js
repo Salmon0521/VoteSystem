@@ -1,43 +1,33 @@
-var candidateNum = 2;
+var count = 0;
+var totalCandidate = 0;
 var addState = false;
 function addCandidate() {
     if (addState === false) {
         addState = true;
-        $("#candidateTable").append("<tr>"+
-            "<td align=center>" + "<input type=\"file\" name=\"candidateIMG\"/></td>" +
-            "<td align=center>" + "<input type=\"text\" id=\"candidateName\"/></td>" +
-            "<td align=center>" + "<input type=\"text\" id=\"candidateIntroduction\"/></td>" +
-            "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"listCandidate()\" value=\"確認\">" + "</td>" +
-            "</tr>");
+        $("#newCandidateTable").append("<tr>" +
+            "<td align=center>" + "<input type=\"file\" name=\"candidateIMG\" id=\"file\" accept=\".jpg,.jpmg,.png\" />" + "</td>" +
+            "<td align=center>" + "<input type=\"text\" name=\"candidateName\" id=\"name\" required />" + "</td>" +
+            "<td align=center>" + "<input type=\"text\" name=\"candidateIntroduction\" id=\"introduction\" />" + "</td>" +
+            "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" value=\"確認\" />" + "</td>" +
+            "</form></tr>");
     } else {
         alert("請先完成新增!");
     }
 }
 
-function listCandidate() {
-    let candidateName = document.getElementById("candidateName").value;
-    let candidateIntroduction = document.getElementById("candidateIntroduction").value;
-    let candidateIMG = document.getElementsByName("candidateIMG")[0].files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(candidateIMG);
-    reader.onload = function () {
-        var candidateIMGBase64 = reader.result;
-        $("#candidateTable").append("<tr id=\"" + candidateNum + "\">" +
-            "<td align=center id=\"candidateIMG" + candidateNum + "\">" + "<img src=\"" + candidateIMGBase64 + "\" width=\"100\" height=\"100\"/>" + "</td>" +
-            "<td align=center id=\"candidateName" + candidateNum + "\">" + candidateName + "</td>" +
-            "<td align=center id=\"candidateIntroduction" + candidateNum + "\">" + candidateIntroduction + "</td>" +
-            "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"deleteCandidate(" + candidateNum + ")\" value=\"刪除\">" + "</td>" +
-            "</tr>");
-        addState = false;
-        candidateNum++;
-    };
-    document.getElementById("candidateName").remove();
-    document.getElementsByName("candidateIMG")[0].remove();
-    document.getElementById("candidateIntroduction").remove();
-}
-
-function deleteCandidate(divIndex) {
-    document.getElementById(divIndex).remove();
+function deleteCandidate(CandidateUUID) {
+    console.log(CandidateUUID);
+    document.getElementById(CandidateUUID).remove();
+    $.ajax({
+        url : "deleteCandidate",
+        type : "POST",
+        data: {
+            "candidateUUID" : CandidateUUID
+        },
+        success : function(response) {
+            window.location.reload();
+        }
+    });
 }
 
 function showList() {
@@ -45,69 +35,18 @@ function showList() {
         url : "GetCandidates",
         type : "POST",
         data: {},
+        dataType : "json",
         success : function(response) {
-            console.log(response);}
-    //         if(response.length > 0){
-    //             $("#candidateTable").empty();
-    //             $("#candidateTable").append("<tr>"+
-    //                 "<th>候選人姓名</th>"+
-    //                 "<th>照片</th>"+
-    //                 "<th>候選人簡介</th>"+
-    //             for(var i=0 ; i < response.length ; i++){
-    //                 $("#candidateTable").append("<tr>"+
-    //                     "<td align=center>" + ifUndefine(response[i].teacher_code) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].teacher_name) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].position) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].div_calias) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].note_or_idno) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].basic_hr) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].teaching_hr) + "</td>"+
-    //                     /*"<td align=center>" + ifUndefine(response[i].parttime_hr) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].substitute_hr) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].tutorial_hr) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].other) + "</td>"+*/
-    //                     "<td align=center>" + ifUndefine(response[i].personal_code) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].teacher_group) + "</td>"+
-    //                     "<td align=center>" + ifUndefine(response[i].semester_code) + "</td>"+
-    //                     "</tr>");
-    //
-    //             }
-    //
-    //         }
-    //         else{
-    //             $("#addbtn").remove();
-    //             $("#updatebtn").remove();
-    //             $("#selectbtn").remove();
-    //             //$("#importbtn").remove();
-    //             $("#cancelbtn").remove();
-    //             $("#delbtn").remove();
-    //             $("#addconfirmbtn").remove();
-    //
-    //             $("#staffcode").empty();
-    //             $("#staffcode").append("<tr>"+
-    //                 "<th>代碼</th>"+
-    //                 "<th>教師名稱</th>"+
-    //                 "<th>職務</th>"+
-    //                 "<th>領域</th>"+
-    //                 "<th>身分證字號</th>"+
-    //                 "<th>基本</th>"+
-    //                 "<th>授課</th>"+
-    //                 /*"<th>兼課</th>"+
-    //                 "<th>代課</th>"+
-    //                 "<th>輔導</th>"+
-    //                 "<th>其他</th>"+*/
-    //                 "<th>人事編號</th>"+
-    //                 "<th>教師組別</th>"+
-    //                 "<th>學期編號</th>"+
-    //                 "</tr>");
-    //             $("#staffcode").append("<tr class=text-center> <td colspan=10 id=empty>查無資料</td></tr>")
-    //             alert('查詢無此教師');
-    //         }
-    // for (let i = 1; i < fileNameList.length; i++) {
-    //     $("#candidateTable").append("<tr><td>"+
-    //         "<a>"+fileNameList[i]+"</a>"+
-    //         "<button class=\"span-right\" onclick=\"Download('"+fileNameList[i]+"')\">下載</button>"+
-    //         "</td></tr>");
+            for (let i = 0; i < response.length; i++) {
+                $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\">" +
+                    "<td align=center id=\"candidateIMG" + count + "\">" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
+                    "<td align=center id=\"candidateName" + count + "\">" + response[i].name + "</td>" +
+                    "<td align=center id=\"candidateIntroduction" + count + "\">" + response[i].introduction + "</td>" +
+                    "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
+                    "</tr>"
+                );
+            }
+        }
     });
 }
 $(document).ready(function(){

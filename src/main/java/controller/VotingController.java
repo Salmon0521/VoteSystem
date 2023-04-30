@@ -1,5 +1,7 @@
 package controller;
 
+import Model.Candidate;
+import com.google.gson.Gson;
 import service.UserService;
 import service.VoteActivity;
 
@@ -9,13 +11,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+
+import util.Utility;
 
 
 @WebServlet(
         name = "VotingController",
-        urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/AdminIndex",
-                "/Invoicing", "/Vote", "/Reset", "/BallotPage"}
+        urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/EditBallot","/CheckVoteActivity",
+                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/addCandidate","/deleteCandidate"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -32,23 +44,31 @@ public class VotingController extends HttpServlet {
         }
 
         switch (path) {
-            case "AdminIndex":
-                if (privilege == 1){
-                    request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
-                }
-                else {
-                    response.sendRedirect(BASE_URL + "/Index");
-                }
-                break;
             case "Index":
                 if (privilege == 0){
                     request.getRequestDispatcher("/WEB-INF/jsp/view/ParticipantIndex.jsp").forward(request, response);
                 }
                 else if (privilege == 1){
-                    request.getRequestDispatcher("/WEB-INF/jsp/view/Index.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/jsp/view/AdminIndex.jsp").forward(request, response);
                 }
                 else {
                     response.sendRedirect(BASE_URL + "/Login");
+                }
+                break;
+            case "EditBallot":
+                if (privilege == 1){
+                    request.getRequestDispatcher("/WEB-INF/jsp/view/EditBallot.jsp").forward(request, response);
+                }
+                else {
+                    response.sendRedirect(BASE_URL + "/Index");
+                }
+                break;
+            case "ManageVoteActivity":
+                if (privilege == 1){
+                    request.getRequestDispatcher("/WEB-INF/jsp/view/ManageVoteActivity.jsp").forward(request, response);
+                }
+                else {
+                    response.sendRedirect(BASE_URL + "/Index");
                 }
                 break;
             case "BallotPage":
@@ -56,7 +76,7 @@ public class VotingController extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/jsp/view/Ballot.jsp").forward(request, response);
                 }
                 else {
-                    response.sendRedirect(BASE_URL + "/Login");
+                    response.sendRedirect(BASE_URL + "/Index");
                 }
                 break;
             case "Login":
@@ -72,6 +92,7 @@ public class VotingController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
+        String servletPath = getServletContext().getRealPath("/");
         PrintWriter out = response.getWriter();
         Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
@@ -82,9 +103,11 @@ public class VotingController extends HttpServlet {
 
                 privilege = userService.login(account, password);
                 String UUID = userService.getUserUUID(account);
+
                 request.getSession().setAttribute("account", account);
                 request.getSession().setAttribute("privilege", privilege);
                 request.getSession().setAttribute("UUID", UUID);
+
                 if (privilege == null) {
                     out.print("error");
                 }
@@ -101,6 +124,13 @@ public class VotingController extends HttpServlet {
                     response.sendRedirect(BASE_URL + "/Login");
                 }
                 break;
+            case "CheckVoteActivity":
+                if (!voteActivity.checkVoteActivityStatus()) {
+                    out.print("0");
+                } else {
+                    out.print("1");
+                }
+                break;
             case "Vote":
                 if (!voteActivity.checkVoteActivityStatus()) {
                     response.setStatus(400);
@@ -112,6 +142,43 @@ public class VotingController extends HttpServlet {
                     userService.setUserUUID((String) request.getSession().getAttribute("account"), ballotUUID);
                     request.getSession().setAttribute("UUID", ballotUUID);
                 }
+                break;
+            case "addCandidate":
+                String savePath = servletPath + "img/candidateIMG/";
+                String uuid = Utility.generateUUID();
+
+                Map<String, String> candidateData = new LinkedHashMap<>();
+                candidateData.put("uuid", uuid);
+                candidateData.put("name", request.getParameter("candidateName"));
+                candidateData.put("introduction", request.getParameter("candidateIntroduction"));
+                candidateData.put("image", uuid + ".png");
+
+                Part part = request.getPart("candidateIMG");
+                if (!part.getSubmittedFileName().equals("")) {
+                    part.write(savePath + candidateData.get("image"));
+                } else {
+                    String sourcePath = servletPath + "img/candidate.png" ;
+                    File sourceFile = new File(sourcePath);
+                    File targetFile = new File(savePath + candidateData.get("image"));
+                    Files.copy(sourceFile.toPath(), targetFile.toPath());
+                }
+
+                voteActivity.addCandidate(candidateData);
+                response.sendRedirect(BASE_URL + "/EditBallot");
+                break;
+            case "deleteCandidate":
+                String candidateUUID = request.getParameter("candidateUUID");
+                String targetFile = servletPath + "img/candidateIMG/" + candidateUUID + ".png";
+
+                Path targetFilePath = Paths.get(targetFile );
+                Files.deleteIfExists(targetFilePath);
+
+                voteActivity.deleteCandidate(candidateUUID);
+                break;
+            case "GetCandidates":
+                List<Candidate> candidates = voteActivity.getCandidates();
+                String candidatesJson = new Gson().toJson(candidates);
+                out.print(candidatesJson);
                 break;
         }
     }

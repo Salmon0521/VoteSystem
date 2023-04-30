@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label class="fs-label">密碼:</label>
-                <input type="text" id="password" class="form-control">
+                <input type="password" id="password" class="form-control">
             </div>
             <button type="button" onclick="login()" class="btn btn-primary fs-label">登入</button>
         </form>

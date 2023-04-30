@@ -28,8 +28,21 @@ public class VoteActivity {
         return status;
     }
 
-    public void reviseCandidate(List<Map<String, String>> candidateData) {
+    public List<Candidate> getCandidates() {
+        return candidates.getCandidates();
+    }
 
+    public void addCandidate(Map<String, String> candidateData) {
+        candidates.addCandidate(candidateData);
+    }
+
+    public void deleteCandidate(String candidateUUID) {
+        for (Candidate candidate : candidates.getCandidates()) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                candidates.deleteCandidate(candidateUUID);
+                break;
+            }
+        }
     }
 
     public int realtimeCountBallots() {
