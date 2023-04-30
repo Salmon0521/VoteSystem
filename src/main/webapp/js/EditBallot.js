@@ -8,7 +8,7 @@ function addCandidate() {
             "<td align=center>" + "<input type=\"text\" name=\"candidateName\" id=\"name\" required />" + "</td>" +
             "<td align=center>" + "<input type=\"text\" name=\"candidateIntroduction\" id=\"introduction\" />" + "</td>" +
             "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" value=\"確認\" />" + "</td>" +
-            "</form></tr>");
+            "</tr>");
     } else {
         alert("請先完成新增!");
     }
@@ -26,6 +26,10 @@ function deleteCandidate(CandidateUUID) {
             window.location.reload();
         }
     });
+}
+
+function createVotingActivity() {
+
 }
 
 function showList() {
