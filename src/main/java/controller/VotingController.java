@@ -27,7 +27,7 @@ import util.Utility;
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/EditBallot","/CheckVoteActivity",
-                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/addCandidate","/deleteCandidate"}
+                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/AddCandidate","/DeleteCandidate"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -143,7 +143,7 @@ public class VotingController extends HttpServlet {
                     request.getSession().setAttribute("UUID", ballotUUID);
                 }
                 break;
-            case "addCandidate":
+            case "AddCandidate":
                 String savePath = servletPath + "img/candidateIMG/";
                 String uuid = Utility.generateUUID();
 
@@ -166,7 +166,7 @@ public class VotingController extends HttpServlet {
                 voteActivity.addCandidate(candidateData);
                 response.sendRedirect(BASE_URL + "/EditBallot");
                 break;
-            case "deleteCandidate":
+            case "DeleteCandidate":
                 String candidateUUID = request.getParameter("candidateUUID");
                 String targetFile = servletPath + "img/candidateIMG/" + candidateUUID + ".png";
 

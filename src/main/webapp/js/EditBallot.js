@@ -1,6 +1,5 @@
-var count = 0;
-var totalCandidate = 0;
 var addState = false;
+
 function addCandidate() {
     if (addState === false) {
         addState = true;
@@ -16,10 +15,9 @@ function addCandidate() {
 }
 
 function deleteCandidate(CandidateUUID) {
-    console.log(CandidateUUID);
     document.getElementById(CandidateUUID).remove();
     $.ajax({
-        url : "deleteCandidate",
+        url : "DeleteCandidate",
         type : "POST",
         data: {
             "candidateUUID" : CandidateUUID
@@ -39,9 +37,9 @@ function showList() {
         success : function(response) {
             for (let i = 0; i < response.length; i++) {
                 $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\">" +
-                    "<td align=center id=\"candidateIMG" + count + "\">" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
-                    "<td align=center id=\"candidateName" + count + "\">" + response[i].name + "</td>" +
-                    "<td align=center id=\"candidateIntroduction" + count + "\">" + response[i].introduction + "</td>" +
+                    "<td align=center>" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
+                    "<td align=center>" + response[i].name + "</td>" +
+                    "<td align=center>" + response[i].introduction + "</td>" +
                     "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
                     "</tr>"
                 );
@@ -49,6 +47,7 @@ function showList() {
         }
     });
 }
+
 $(document).ready(function(){
     showList();
 });

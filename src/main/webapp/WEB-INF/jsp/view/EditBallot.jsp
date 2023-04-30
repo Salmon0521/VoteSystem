@@ -9,18 +9,18 @@
 </head>
 
 <body>
-<table id="candidateTable">
-    <tr>
-        <th>照片</th>
-        <th>候選人姓名</th>
-        <th>候選人簡介</th>
-    </tr>
-</table>
-<form action="addCandidate" method="POST" encType="multipart/form-data">
-    <table id="newCandidateTable">
+    <table id="candidateTable">
+        <tr>
+            <th>照片</th>
+            <th>候選人姓名</th>
+            <th>候選人簡介</th>
+        </tr>
     </table>
-</form>
-<button type="button" onclick="addCandidate()">新增候選人</button>
-<button type="button" onclick="">建立投票活動</button>
+    <form action="AddCandidate" method="POST" encType="multipart/form-data">
+        <table id="newCandidateTable">
+        </table>
+    </form>
+    <button type="button" onclick="addCandidate()">新增候選人</button>
+    <button type="button" onclick="">建立投票活動</button>
 </body>
 </html>
