@@ -40,6 +40,10 @@ public class UserService {
         }
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
     public Integer login(String account, String password) {
         for (User user : users) {
             if (checkLogin(user, account, password)) {

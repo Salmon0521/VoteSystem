@@ -2,7 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Ballots {
     private List<Ballot> ballotList = new ArrayList<>();
@@ -21,17 +20,8 @@ public class Ballots {
         return ballotList.size();
     }
 
-    public void removeAll() {
+    public void removeAllBallot() {
         ballotList.clear();
     }
 
-    public int countBallots(String candidateID) {
-        int count = 0;
-        for (Ballot ballot : ballotList) {
-            if (ballot.getCandidateId().equals(candidateID)) {
-                ++count;
-            }
-        }
-        return count;
-    }
 }

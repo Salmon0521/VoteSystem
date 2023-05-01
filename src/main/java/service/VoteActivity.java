@@ -2,7 +2,6 @@ package service;
 
 import Model.*;
 
-import java.io.File;
 import java.util.*;
 
 public class VoteActivity {
@@ -29,13 +28,17 @@ public class VoteActivity {
     }
 
     public void reset() {
-        ballots.removeAll();
-        candidates.removeAll();
+        ballots.removeAllBallot();
+        candidates.removeAllCandidate();
         status = false;
     }
 
     public List<Candidate> getCandidates() {
         return candidates.getCandidates();
+    }
+
+    public List<Ballot> getBallots() {
+        return ballots.getBallots();
     }
 
     public int countBallot() {
@@ -53,17 +56,5 @@ public class VoteActivity {
                 break;
             }
         }
-    }
-
-    public int realtimeCountBallots() {
-        return 0;
-    }
-
-    public Map<String, String> getVotedBallot(String uuid) {
-        return null;
-    }
-
-    public File downloadResult() {
-        return null;
     }
 }
