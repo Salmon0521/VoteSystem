@@ -1,12 +1,11 @@
 package Model;
 
 import util.Utility;
-
 import java.util.Date;
 
 public class Ballot {
     private String uuid = "";
-    private String candidateId = "";
+    private String candidateUUID = "";
     private Date votingTime = null;
 
     public Ballot(String candidateId) {
@@ -20,14 +19,11 @@ public class Ballot {
     public void setUUID() {
         this.uuid = Utility.generateUUID();
     }
-    public String getCandidateId() {
-        return candidateId;
+    public String getCandidateUUID() {
+        return candidateUUID;
     }
-    public void setCandidateId(String candidateId) {
-        this.candidateId = candidateId;
-    }
-    public Date getVotingTime() {
-        return votingTime;
+    public void setCandidateId(String candidateUUID) {
+        this.candidateUUID = candidateUUID;
     }
     public void setVotingTime() {
         this.votingTime = new Date();

@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.Map;
-import java.util.UUID;
 
 public class Candidate {
     private String uuid = "";
