@@ -11,7 +11,7 @@ function sendBallot() {
     });
 
     console.log(VoteData);
-
+    alert(VoteData)
     if (count*2 == total) {
         let reset = confirm("確定送出選票？");
         if (reset) {
@@ -57,7 +57,7 @@ function showList() {
                 $(".table").append(
                     "<tr class=\"row\">" +
                         "<td class=\"col d-flex justify-content-center\">" +
-                            "<input id=\"candidate0\" type=\"radio\" value=\"0\" name=\"radioBox\" class=\"ballotInput\"/>" +
+                            "<input id=\"candidate0\" type=\"radio\" value=\""+ response[i].uuid +"\" name=\"radioBox\" class=\"ballotInput\"/>" +
                         "</td>" +
                         "<td class=\"col d-flex flex-column align-itmes-center text-center\">" +
                             "<div class=\"card-flip\">" +

@@ -16,10 +16,6 @@ public class VoteActivity {
     private Candidates candidates = new Candidates();
     private List<Map<String, String>> result = new ArrayList<>();
 
-    public void Invoicing(String MeetingType){
-
-    }
-
     public String vote(String voteData) {
         return ballots.addBallot(voteData);
     }
@@ -32,8 +28,18 @@ public class VoteActivity {
         this.status = status;
     }
 
+    public void reset() {
+        ballots.removeAll();
+        candidates.removeAll();
+        status = false;
+    }
+
     public List<Candidate> getCandidates() {
         return candidates.getCandidates();
+    }
+
+    public int countBallot() {
+        return ballots.countBallots();
     }
 
     public void addCandidate(Map<String, String> candidateData) {

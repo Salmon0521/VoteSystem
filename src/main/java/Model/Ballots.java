@@ -17,6 +17,14 @@ public class Ballots {
         return ballot.getUUID();
     }
 
+    public int countBallots() {
+        return ballotList.size();
+    }
+
+    public void removeAll() {
+        ballotList.clear();
+    }
+
     public int countBallots(String candidateID) {
         int count = 0;
         for (Ballot ballot : ballotList) {

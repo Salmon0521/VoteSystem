@@ -24,4 +24,8 @@ public class Candidates {
             }
         }
     }
+
+    public void removeAll() {
+        candidateList.clear();
+    }
 }

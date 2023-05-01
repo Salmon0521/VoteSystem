@@ -25,8 +25,9 @@ import util.Utility;
 
 @WebServlet(
         name = "VotingController",
-        urlPatterns = {"/Login", "/CheckLogin", "/Logout", "/CheckVoting", "/Index", "/EditBallot","/CheckVoteActivity",
-                "/GetCandidates","/ManageVoteActivity","/Invoicing", "/Vote", "/Reset", "/BallotPage", "/CreateVoteActivity", "/AddCandidate","/DeleteCandidate"}
+        urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
+                "/EditBallot", "/CheckVoteActivity", "/GetCandidates", "/AddCandidate", "/DeleteCandidate", "/ManageVoteActivity",
+                "/Invoicing", "/Vote", "/Reset", "/CountBallot"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -155,6 +156,16 @@ public class VotingController extends HttpServlet {
                     request.getSession().setAttribute("UUID", ballotUUID);
                 }
                 break;
+            case "Invoicing":
+                if (privilege == 1) {
+                    voteActivity.setStatus(false);
+                }
+                break;
+            case "Reset":
+                if (privilege == 1) {
+                    voteActivity.reset();
+                }
+                break;
             case "AddCandidate":
                 String savePath = servletPath + "img/candidateIMG/";
                 String uuid = Utility.generateUUID();
@@ -191,6 +202,10 @@ public class VotingController extends HttpServlet {
                 List<Candidate> candidates = voteActivity.getCandidates();
                 String candidatesJson = new Gson().toJson(candidates);
                 out.print(candidatesJson);
+                break;
+            case "CountBallot":
+                int count = voteActivity.countBallot();
+                out.print(count);
                 break;
         }
     }
