@@ -3,31 +3,27 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>北科會議系統</title>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/site.css" />
-    <link rel="stylesheet" href="css/loading.css" />
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" href="index">北科會議系統</a>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li style="display:inline" class="nav-item" id="userManage">
-                            <a class="nav-link text-dark" href="ShareScreen">分享螢幕</a>
-                        </li>
-                    </ul>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>投票系統</title>
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <header>
+                <div class="container d-flex py-2 justify-content-between align-items-center">
+                    <a href="Index" class="text-decoration-none text-dark fs-label">投票系統</a>
+                    <div class="d-flex align-items-center fs-label">
+                        <div style="margin-right:1rem">
+                            歡迎,
+                            ${sessionScope.account}
+                        </div>
+                        <a href="Logout"><button class="btn btn-dark fs-label">登出</button></a>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        </header>
+
+
 
 

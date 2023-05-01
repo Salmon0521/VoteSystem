@@ -16,16 +16,43 @@ public class VoteActivity {
     private Candidates candidates = new Candidates();
     private List<Map<String, String>> result = new ArrayList<>();
 
-    public void Invoicing(String MeetingType){
-
-    }
-
     public String vote(String voteData) {
         return ballots.addBallot(voteData);
     }
 
-    public void reviseCandidate(List<Map<String, String>> candidateData) {
+    public boolean getStatus() {
+        return status;
+    }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void reset() {
+        ballots.removeAll();
+        candidates.removeAll();
+        status = false;
+    }
+
+    public List<Candidate> getCandidates() {
+        return candidates.getCandidates();
+    }
+
+    public int countBallot() {
+        return ballots.countBallots();
+    }
+
+    public void addCandidate(Map<String, String> candidateData) {
+        candidates.addCandidate(candidateData);
+    }
+
+    public void deleteCandidate(String candidateUUID) {
+        for (Candidate candidate : candidates.getCandidates()) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                candidates.deleteCandidate(candidateUUID);
+                break;
+            }
+        }
     }
 
     public int realtimeCountBallots() {

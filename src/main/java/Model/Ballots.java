@@ -7,10 +7,22 @@ import java.util.Map;
 public class Ballots {
     private List<Ballot> ballotList = new ArrayList<>();
 
+    public List<Ballot> getBallots() {
+        return ballotList;
+    }
+
     public String addBallot(String ballotData) {
         Ballot ballot = new Ballot(ballotData);
         ballotList.add(ballot);
         return ballot.getUUID();
+    }
+
+    public int countBallots() {
+        return ballotList.size();
+    }
+
+    public void removeAll() {
+        ballotList.clear();
     }
 
     public int countBallots(String candidateID) {
