@@ -3,11 +3,11 @@ var addState = false;
 function addCandidate() {
     if (addState === false) {
         addState = true;
-        $("#newCandidateTable").append("<tr>" +
-            "<td align=center>" + "<input type=\"file\" name=\"candidateIMG\" id=\"file\" accept=\".jpg,.jpmg,.png\" />" + "</td>" +
-            "<td align=center>" + "<input type=\"text\" name=\"candidateName\" id=\"name\" required />" + "</td>" +
-            "<td align=center>" + "<input type=\"text\" name=\"candidateIntroduction\" id=\"introduction\" />" + "</td>" +
-            "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" value=\"確認\" />" + "</td>" +
+        $("#newCandidateTable").append("<tr class=\"row\">" +
+            "<td class=\"col-3\">" + "<input type=\"file\" name=\"candidateIMG\" id=\"file\" accept=\".jpg,.jpmg,.png\" />" + "</td>" +
+            "<td class=\"col-3\">" + "<input type=\"text\" name=\"candidateName\" id=\"name\" required />" + "</td>" +
+            "<td class=\"col-3\">" + "<input type=\"text\" name=\"candidateIntroduction\" id=\"introduction\" />" + "</td>" +
+            "<td class=\"col-3\">" + "<input class=\"btn btn-secondary\" type=\"submit\" value=\"確認\" />" + "</td>" +
             "</tr>");
     } else {
         alert("請先完成新增!");
@@ -57,18 +57,18 @@ function showList() {
         data: {},
         dataType : "json",
         success : function(response) {
-            $("#candidateTable").append("<tr>" +
-                "<th align=center>候選人照片</th>" +
-                "<th align=center>候選人姓名</th>" +
-                "<th align=center>候選人介紹</th>" +
+            $("#candidateTable").append("<tr  class=\"row\">" +
+                "<th class=\"col-3\">候選人照片</th>" +
+                "<th class=\"col-3\">候選人姓名</th>" +
+                "<th class=\"col-3\">候選人介紹</th>" +
                 "</tr>"
             );
             for (let i = 0; i < response.length; i++) {
-                $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\">" +
-                    "<td align=center>" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
-                    "<td align=center>" + response[i].name + "</td>" +
-                    "<td align=center>" + response[i].introduction + "</td>" +
-                    "<td align=center>" + "<input style=\"width:6em\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
+                $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\" class=\"row\">" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].name + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].introduction + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<input class=\"btn btn-danger\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
                     "</tr>"
                 );
             }

@@ -52,8 +52,18 @@
     border: 0px;
 }
 
+.button.createVotingActivity {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: url("../img/createVotingActivity_1.png");
+    background-size: cover;
+    border: 0px
+}
+
 .vote:hover,
-.report:hover {
+.report:hover,
+ .createVotingActivity:hover{
     transform: translateY(-10px);
     transition: 0.3s;
     box-shadow: 0px 16px 24px -12px rgba(0, 0, 0, 0.6);
