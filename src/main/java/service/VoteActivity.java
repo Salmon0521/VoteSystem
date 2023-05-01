@@ -28,6 +28,10 @@ public class VoteActivity {
         return status;
     }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public List<Candidate> getCandidates() {
         return candidates.getCandidates();
     }

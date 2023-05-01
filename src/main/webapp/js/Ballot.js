@@ -39,3 +39,48 @@ function sendBallot() {
         alert("選票填寫錯誤!");
     }
 }
+
+function showList() {
+    $.ajax({
+        url : "GetCandidates",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            $(".table").append(
+                "<tr class=\"row text-center\">" +
+                    "<th class=\"col\">勾選：</th>" +
+                    "<th class=\"col\">候選人：</th>" +
+                "</tr>"
+            );
+            for (let i = 0; i < response.length; i++) {
+                $(".table").append(
+                    "<tr class=\"row\">" +
+                        "<td class=\"col d-flex justify-content-center\">" +
+                            "<input id=\"candidate0\" type=\"radio\" value=\"0\" name=\"radioBox\" class=\"ballotInput\"/>" +
+                        "</td>" +
+                        "<td class=\"col d-flex flex-column align-itmes-center text-center\">" +
+                            "<div class=\"card-flip\">" +
+                                "<div class=\"flip\">" +
+                                    "<div class=\"front d-flex justify-content-center\">" +
+                                        "<div class=\"card cardSize\">" +
+                                            "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\"/>" +
+                                        "</div>" +
+                                    "</div>" +
+                                    "<div class=\"back d-flex justify-content-center\">" +
+                                        "<div class=\"card cardSize\">" + response[i].introduction + "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                            "<br/>" + response[i].name +
+                        "</td>" +
+                    "</tr>"
+                );
+            }
+        }
+    });
+}
+
+$(document).ready(function(){
+    showList();
+});

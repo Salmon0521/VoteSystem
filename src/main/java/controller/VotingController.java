@@ -131,13 +131,17 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "CreateVoteActivity":
-               /* String voteActivityName = request.getParameter("voteActivityName");
-                String voteActivityIntroduction = request.getParameter("voteActivityIntroduction");
-                String voteActivityStartTime = request.getParameter("voteActivityStartTime");
-                String voteActivityEndTime = request.getParameter("voteActivityEndTime");
-                String voteActivityStatus = request.getParameter("voteActivityStatus");
-
-                voteActivity.createVoteActivity(voteActivityName, voteActivityIntroduction, voteActivityStartTime, voteActivityEndTime, voteActivityStatus);*/
+                if (!voteActivity.getStatus()) {
+                    if (voteActivity.getCandidates().size() > 0){
+                        voteActivity.setStatus(true);
+                        out.print("0");
+                    }
+                    else {
+                        out.print("1");
+                    }
+                } else if (voteActivity.getStatus()) {
+                    out.print("2");
+                }
                 break;
             case "Vote":
                 if (!voteActivity.getStatus()) {

@@ -28,8 +28,26 @@ function deleteCandidate(CandidateUUID) {
     });
 }
 
-function createVotingActivity() {
-
+function createVoteActivity() {
+    $.ajax({
+        url : "CreateVoteActivity",
+        type : "POST",
+        data: {},
+        success : function(response) {
+            if (response === "0") {
+                alert("投票活動建立成功!");
+                window.location.href = "ManageVoteActivity";
+            }
+            else if (response === "1") {
+                alert("候選人至少需要一個");
+                window.location.reload();
+            }
+            else if (response === "2") {
+                alert("已存在投票活動");
+                window.location.href = "ManageVoteActivity";
+            }
+        }
+    })
 }
 
 function showList() {

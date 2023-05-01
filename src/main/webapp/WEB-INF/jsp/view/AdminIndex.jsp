@@ -9,7 +9,7 @@
 
 <body>
 <div class="wrap">
-    <button class="button" id="createActivity" onclick="createActivity()">創立投票活動</button>
+    <button class="button" id="createActivity" onclick="editCandidate()">創立投票活動</button>
     <button class="button" id="ballotCondition">投票狀況與結果</button>
 </div>
 </body>

@@ -17,7 +17,7 @@ function viewBallot() {
     });
 }
 
-function createActivity() {
+function editCandidate() {
     $.ajax({
         type : 'POST',
         url : 'CheckVoteActivity',
@@ -28,7 +28,8 @@ function createActivity() {
             if (data === "0") {
                 window.location.href = "EditBallot";
             } else if (data === "1") {
-                window.location.href = "ManageVoteActivity";
+                alert("已存在投票活動!");
+                window.location.href = "Index";
             }
         },
     });

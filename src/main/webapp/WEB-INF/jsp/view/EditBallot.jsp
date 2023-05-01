@@ -16,6 +16,6 @@
         </table>
     </form>
     <button type="button" onclick="addCandidate()">新增候選人</button>
-    <button type="button" onclick="">建立投票活動</button>
+    <button type="button" onclick="createVoteActivity()">建立投票活動</button>
 </body>
 </html>
