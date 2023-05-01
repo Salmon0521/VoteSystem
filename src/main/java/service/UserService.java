@@ -88,4 +88,12 @@ public class UserService {
         }
         return false;
     }
+
+    public void resetUserVoted() {
+        for (User user : users) {
+            if (user instanceof Participant) {
+                ((Participant) user).setVoted(false);
+            }
+        }
+    }
 }

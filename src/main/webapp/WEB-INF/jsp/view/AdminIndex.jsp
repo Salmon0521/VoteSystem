@@ -7,10 +7,16 @@
     <script src="js/Index.js"></script>
 </head>
 
-<body>
-<div class="wrap">
-    <button class="button" id="createActivity" onclick="editCandidate()">創立投票活動</button>
-    <button class="button" id="ballotCondition">投票狀況與結果</button>
-</div>
+<body class="background">
+    <div class="wrap">
+        <div>
+            <div class="fs-label text-center">創立投票活動</div>
+            <button class="button createVotingActivity" id="createActivity" onclick="editCandidate()"></button>
+        </div>
+        <div>
+            <div class="fs-label text-center">查看投票結果</div>
+            <button class="button report" id="ballotCondition"></button>
+        </div>
+    </div>
 </body>
 </html>

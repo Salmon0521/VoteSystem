@@ -96,6 +96,10 @@ public class VotingController extends HttpServlet {
         PrintWriter out = response.getWriter();
         Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
+        if (privilege == null || privilege > 1) {
+            this.doGet(request, response);
+        }
+
         switch (path) {
             case "CheckLogin":
                 String account = request.getParameter("Account");
@@ -163,7 +167,13 @@ public class VotingController extends HttpServlet {
                 break;
             case "Reset":
                 if (privilege == 1) {
+                    List<Candidate> candidates = voteActivity.getCandidates();
+                    for (Candidate candidate : candidates) {
+                        File file = new File(servletPath + "img/candidateIMG/" + candidate.getImage());
+                        file.delete();
+                    }
                     voteActivity.reset();
+                    userService.resetUserVoted();
                 }
                 break;
             case "AddCandidate":

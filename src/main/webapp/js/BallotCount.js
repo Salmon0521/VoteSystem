@@ -18,7 +18,7 @@ function reset() {
     let reset = confirm("此操作會移除所有候選人資訊及投票紀錄");
     if (reset) {
         $.ajax({
-            type : 'post',
+            type : 'POST',
             url : 'Reset',
             data : {},
             success: function () {

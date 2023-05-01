@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<th>已投票人數：<font id="count"></font></th>
+<th>已投票人數：<font id="count">0</font></th>
 <button class="invoicing-btn" id="invoicing" onclick="invoicing('${meetingType}')">開票</button>
 <button class="reset-btn" id="reset" onclick="reset()">重置</button>
 </body>
