@@ -1,9 +1,7 @@
 function sendBallot() {
     let VoteData = 0;
-    let total = 0;
     let count = 0;
     $("input").each(function() {
-        total += 1;
         if($(this).is(':checked')) {
             count += 1;
             VoteData = $(this).val();
@@ -11,8 +9,9 @@ function sendBallot() {
     });
 
     console.log(VoteData);
-    alert(VoteData)
-    if (count*2 == total) {
+    console.log(count);
+
+    if (count === 1) {
         let reset = confirm("確定送出選票？");
         if (reset) {
             $.ajax({
