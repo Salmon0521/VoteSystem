@@ -29,7 +29,7 @@ public class Participant extends User{
         return Voted;
     }
 
-    public void setVoted(boolean isVoted) {
+    public void setVoted(boolean Voted) {
         this.Voted = Voted;
     }
 }
