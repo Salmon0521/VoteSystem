@@ -27,7 +27,7 @@ public class BallotTest {
     public void getCandidateUUIDTest_2() throws Exception {
         Ballot ballot1 = new Ballot("abc");
         assertEquals("abc", ballot1.getCandidateUUID());
-        ballot1.setCandidateId("qwe");
+        ballot1.setCandidateUUID("qwe");
         assertEquals("qwe", ballot1.getCandidateUUID());
     }
 
