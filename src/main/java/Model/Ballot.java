@@ -8,9 +8,9 @@ public class Ballot {
     private String candidateUUID = "";
     private Date votingTime = null;
 
-    public Ballot(String candidateId) {
+    public Ballot(String candidateUUID) {
         setUUID();
-        setCandidateUUID(candidateId);
+        setCandidateUUID(candidateUUID);
         setVotingTime();
     }
     public String getUUID() {
