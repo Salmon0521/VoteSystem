@@ -60,7 +60,7 @@ public class UserService {
         return false;
     }
 
-    public void updateUserVotingStatus(String account, String ballotUUID) {
+    public void updateUserVoted(String account, String ballotUUID) {
         for (User user : users) {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {
@@ -82,7 +82,7 @@ public class UserService {
         return null;
     }
 
-    public boolean getVoted(String account) {
+    public boolean getUserVoted(String account) {
         for (User user : users) {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {
