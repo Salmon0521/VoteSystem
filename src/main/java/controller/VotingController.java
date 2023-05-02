@@ -119,7 +119,7 @@ public class VotingController extends HttpServlet {
             case "CheckVoting":
                 if (!voteActivity.getStatus()) {
                     out.print("0");
-                } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
+                } else if (userService.getUserVoted((String) request.getSession().getAttribute("account"))) {
                     out.print("1");
                 } else if (privilege == 0) {
                     out.print("2");
@@ -151,7 +151,7 @@ public class VotingController extends HttpServlet {
             case "Vote":
                 if (!voteActivity.getStatus()) {
                     response.setStatus(400);
-                } else if (userService.getVoted((String) request.getSession().getAttribute("account"))) {
+                } else if (userService.getUserVoted((String) request.getSession().getAttribute("account"))) {
                     response.setStatus(500);
                 } else {
                     String VoteData = request.getParameter("VoteData");
