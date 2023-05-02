@@ -60,7 +60,7 @@ public class UserService {
         return false;
     }
 
-    public void updateUserVotingStatus(String account, String ballotUUID) {
+    public void updateUserVoted(String account, String ballotUUID) {
         for (User user : users) {
             if (user.getAccount().equals(account)) {
                 if (user instanceof Participant) {
