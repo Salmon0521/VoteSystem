@@ -35,7 +35,7 @@ function sendBallot() {
             });
         }
     } else {
-        alert("選票填寫錯誤!");
+        alert("至少須選擇一位候選人");
     }
 }
 
