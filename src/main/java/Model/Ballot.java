@@ -10,7 +10,7 @@ public class Ballot {
 
     public Ballot(String candidateId) {
         setUUID();
-        setCandidateId(candidateId);
+        setCandidateUUID(candidateId);
         setVotingTime();
     }
     public String getUUID() {
@@ -22,7 +22,7 @@ public class Ballot {
     public String getCandidateUUID() {
         return candidateUUID;
     }
-    public void setCandidateId(String candidateUUID) {
+    public void setCandidateUUID(String candidateUUID) {
         this.candidateUUID = candidateUUID;
     }
     public void setVotingTime() {
