@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import util.Utility;
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Ballot {
         setVotingTime();
     }
     public String getUUID() {
-        return this.uuid.toString();
+        return uuid;
     }
     public void setUUID() {
         this.uuid = Utility.generateUUID();

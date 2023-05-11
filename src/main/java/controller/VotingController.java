@@ -1,6 +1,6 @@
 package controller;
 
-import Model.Candidate;
+import model.Candidate;
 import com.google.gson.Gson;
 import service.UserService;
 import service.VoteActivity;
@@ -36,7 +36,6 @@ public class VotingController extends HttpServlet {
     VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getServletPath().replace("/", "");
-        String servletPath = getServletContext().getRealPath("/");
         Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
         if (privilege == null || privilege > 1) {
