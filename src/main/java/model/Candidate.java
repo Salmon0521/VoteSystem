@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class Candidate {
         setImage(candidateData.get("image"));
     }
     public String getUUID() {
-        return uuid.toString();
+        return uuid;
     }
     public void setUUID(String uuid) {
         this.uuid = uuid;

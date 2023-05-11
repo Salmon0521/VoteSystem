@@ -1,6 +1,6 @@
 package service;
 
-import Model.*;
+import model.*;
 
 import java.util.*;
 

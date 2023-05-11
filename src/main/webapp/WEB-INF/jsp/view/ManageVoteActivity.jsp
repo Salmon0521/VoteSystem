@@ -6,11 +6,18 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <script src="js/BallotCount.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 
-<body>
-<th>已投票人數：<font id="count">0</font></th>
-<button class="invoicing-btn" id="invoicing" onclick="invoicing('${meetingType}')">開票</button>
-<button class="reset-btn" id="reset" onclick="reset()">重置</button>
+<body class="background">
+<div class="container text-center d-flex justify-content-center center flex-column">
+    <div class="mb-5">
+        <div class="fs-label">已投票人數：<font id="count">0</font></div>
+    </div>
+    <div>
+        <button class="btn btn-secondary" id="invoicing" onclick="invoicing('${meetingType}')">開票</button>
+        <button class="btn btn-danger id="reset" onclick="reset()">重置</button>
+    </div>
+</div>
 </body>
 </html>

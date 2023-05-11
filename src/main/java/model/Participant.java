@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 public class Participant extends User{
     private String ballotUUID = "";
-    private boolean Voted = false;
+    private boolean voted = false;
 
     public Participant(String account, String password, int privilege) {
         this.account = account;
@@ -26,10 +26,10 @@ public class Participant extends User{
     }
 
     public boolean getVoted() {
-        return Voted;
+        return voted;
     }
 
-    public void setVoted(boolean Voted) {
-        this.Voted = Voted;
+    public void setVoted(boolean voted) {
+        this.voted = voted;
     }
 }
