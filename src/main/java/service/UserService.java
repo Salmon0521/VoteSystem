@@ -73,7 +73,7 @@ public class UserService {
 
     public String getUserBallotUUID(String account) {
         for (User user : users) {
-            if (user.getAccount().equals(account) && user instanceof Participant)) {
+            if (user.getAccount().equals(account) && user instanceof Participant) {
                     return ((Participant) user).getBallotUUID();
             }
         }

@@ -1,7 +1,7 @@
 package service;
 
-import Model.Ballot;
-import Model.Candidate;
+import model.Ballot;
+import model.Candidate;
 import org.junit.Assert;
 import service.VoteActivity;
 import org.junit.After;
