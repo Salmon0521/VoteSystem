@@ -1,8 +1,8 @@
 package service;
 
-import Model.Admin;
-import Model.Participant;
-import Model.User;
+import model.Admin;
+import model.Participant;
+import model.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class UserService {
-    List<User> users = new ArrayList();
+    List<User> users = new ArrayList<>();
 
     public UserService() {
         try
@@ -57,26 +57,24 @@ public class UserService {
         if (user.getAccount().equals(account) && user.getPassword().equals(password)) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     public void updateUserVoted(String account, String ballotUUID) {
         for (User user : users) {
-            if (user.getAccount().equals(account)) {
-                if (user instanceof Participant) {
+            if (user.getAccount().equals(account) && user instanceof Participant) {
                     ((Participant) user).setBallotUUID(ballotUUID);
                     ((Participant) user).setVoted(true);
-                }
             }
         }
     }
 
     public String getUserBallotUUID(String account) {
         for (User user : users) {
-            if (user.getAccount().equals(account)) {
-                if (user instanceof Participant) {
+            if (user.getAccount().equals(account) && user instanceof Participant)) {
                     return ((Participant) user).getBallotUUID();
-                }
             }
         }
         return null;
@@ -84,10 +82,8 @@ public class UserService {
 
     public boolean getUserVoted(String account) {
         for (User user : users) {
-            if (user.getAccount().equals(account)) {
-                if (user instanceof Participant) {
+            if (user.getAccount().equals(account) && user instanceof Participant) {
                     return ((Participant) user).getVoted();
-                }
             }
         }
         return false;
