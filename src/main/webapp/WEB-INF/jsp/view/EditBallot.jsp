@@ -17,9 +17,7 @@
                 <input type="text" id="title">
                 <button class="mr-3 btn btn-primary" type="button" onclick="addVotingActivityTitle()">新增標題</button>
             </div>
-            <div id="reviseTitle">
-                <button class="mr-3 btn btn-primary" type="button" onclick="addVotingActivityTitle()">修改標題</button>
-            </div>
+            <button class="mr-3 btn btn-primary" id="reviseTitle" type="button" onclick="addVotingActivityTitle()">修改標題</button>
         </div>
         <table id="candidateTable" class="mb-4">
         </table>

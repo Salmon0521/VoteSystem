@@ -39,7 +39,7 @@ function addVotingActivityTitle() {
                 "votingActivityTitle" : $("#title").val()
             },
             success : function(response) {
-                $("#votingActivityTitle").text("投票活動標題:" + response);
+                $("#votingActivityTitle").text("投票活動標題: " + response);
                 $("#title").val("");
 
                 $("#addTitle").hide();
