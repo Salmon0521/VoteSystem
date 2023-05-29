@@ -21,7 +21,7 @@ function sendBallot() {
                     "VoteData": VoteData,
                 },
                 success: function (data) {
-                    alert("投票成功!");
+                    alert("投票成功!\n候選人: " + data)
                     window.location.href = "Index";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

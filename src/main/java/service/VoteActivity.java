@@ -37,6 +37,15 @@ public class VoteActivity {
         return candidates.getCandidates();
     }
 
+    public String getCandidateName(String candidateUUID) {
+        for (Candidate candidate : candidates.getCandidates()) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                return candidate.getName();
+            }
+        }
+        return null;
+    }
+
     public List<Ballot> getBallots() {
         return ballots.getBallots();
     }

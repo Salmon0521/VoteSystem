@@ -157,6 +157,7 @@ public class VotingController extends HttpServlet {
                     String ballotUUID = voteActivity.vote(VoteData);
                     userService.updateUserVoted((String) request.getSession().getAttribute("account"), ballotUUID);
                     request.getSession().setAttribute("UUID", ballotUUID);
+                    out.print(voteActivity.getCandidateName(VoteData));
                 }
                 break;
             case "Invoicing":
