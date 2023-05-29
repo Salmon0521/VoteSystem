@@ -6,14 +6,20 @@ import java.util.*;
 
 public class VoteActivity {
     private String id = "";
-    private String name = "";
+    private String title = "";
     private String introduction = "";
-    private Date startTime = null;
-    private Date endTime = null;
     private boolean status = false;
     private Ballots ballots = new Ballots();
     private Candidates candidates = new Candidates();
     private List<Map<String, String>> result = new ArrayList<>();
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String vote(String voteData) {
         return ballots.addBallot(voteData);

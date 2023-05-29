@@ -1,8 +1,9 @@
-var addState = false;
+var addCandidateState = false;
+var addTitleState = false;
 
 function addCandidate() {
-    if (addState === false) {
-        addState = true;
+    if (addCandidateState === false) {
+        addCandidateState = true;
         $("#newCandidateTable").append("<tr class=\"row\">" +
             "<td class=\"col-3\">" + "<input type=\"file\" name=\"candidateIMG\" id=\"file\" accept=\".jpg,.jpmg,.png\" />" + "</td>" +
             "<td class=\"col-3\">" + "<input type=\"text\" name=\"candidateName\" id=\"name\" required />" + "</td>" +
@@ -26,6 +27,31 @@ function deleteCandidate(CandidateUUID) {
             window.location.reload();
         }
     });
+}
+
+function addVotingActivityTitle() {
+    if (addTitleState === true) {
+        addTitleState = false;
+        $.ajax({
+            url : "UpdateTitle",
+            type : "POST",
+            data: {
+                "votingActivityTitle" : $("#title").val()
+            },
+            success : function(response) {
+                $("#votingActivityTitle").text("投票活動標題:" + response);
+                $("#title").val("");
+
+                $("#addTitle").hide();
+                $("#reviseTitle").show();
+            }
+        });
+    }
+    else {
+        addTitleState = true;
+        $("#addTitle").show();
+        $("#reviseTitle").hide();
+    }
 }
 
 function createVoteActivity() {
@@ -76,6 +102,23 @@ function showList() {
     });
 }
 
-$(document).ready(function(){
+function showTitle() {
+    $.ajax({
+        url : "GetTitle",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            $("#votingActivityTitle").text("投票活動標題: " + response);
+        }
+    });
+}
+
+function init() {
     showList();
+    showTitle();
+}
+
+$(document).ready(function(){
+    init();
 });

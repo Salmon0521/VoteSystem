@@ -26,8 +26,8 @@ import util.Utility;
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
-                "/EditBallot", "/CheckVoteActivity", "/GetCandidates", "/AddCandidate", "/DeleteCandidate", "/ManageVoteActivity",
-                "/Invoicing", "/Vote", "/Reset", "/CountBallot"}
+                "/EditBallot", "/CheckVoteActivity", "/GetTitle", "/UpdateTitle", "/GetCandidates", "/AddCandidate", "/DeleteCandidate",
+                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -207,6 +207,14 @@ public class VotingController extends HttpServlet {
                 Files.deleteIfExists(targetFilePath);
 
                 voteActivity.deleteCandidate(candidateUUID);
+                break;
+            case "UpdateTitle":
+                String voteActivityTitle = request.getParameter("votingActivityTitle");
+                voteActivity.setTitle(voteActivityTitle);
+                out.print(voteActivityTitle);
+                break;
+            case "GetTitle":
+                out.print(voteActivity.getTitle());
                 break;
             case "GetCandidates":
                 List<Candidate> candidates = voteActivity.getCandidates();
