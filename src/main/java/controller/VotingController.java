@@ -27,7 +27,7 @@ import util.Utility;
         name = "VotingController",
         urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
                 "/EditBallot", "/CheckVoteActivity", "/GetTitle", "/UpdateTitle", "/GetCandidates", "/AddCandidate", "/DeleteCandidate",
-                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot"}
+                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/VotingResult"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -73,6 +73,14 @@ public class VotingController extends HttpServlet {
             case "BallotPage":
                 if (privilege == 0){
                     request.getRequestDispatcher("/WEB-INF/jsp/view/Ballot.jsp").forward(request, response);
+                }
+                else {
+                    response.sendRedirect(BASE_URL + "/Index");
+                }
+                break;
+            case "VotingResult":
+                if (privilege < 2){
+                    request.getRequestDispatcher("/WEB-INF/jsp/view/VotingResult.jsp").forward(request, response);
                 }
                 else {
                     response.sendRedirect(BASE_URL + "/Index");
