@@ -34,3 +34,21 @@ function editCandidate() {
         },
     });
 }
+
+function invoicingActivity() {
+    $.ajax({
+        type : 'POST',
+        url : 'CheckVoteActivity',
+        data : {
+
+        },
+        success: function (data) {
+            if (data === "0") {
+                alert("投票活動尚未舉辦");
+                window.location.href = "Index";
+            } else if (data === "1") {
+                window.location.href = "ManageVoteActivity";
+            }
+        },
+    });
+}

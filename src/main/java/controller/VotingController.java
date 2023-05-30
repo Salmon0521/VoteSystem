@@ -165,7 +165,12 @@ public class VotingController extends HttpServlet {
                 break;
             case "Invoicing":
                 if (privilege == 1) {
-                    voteActivity.setStatus(false);
+                    if (!voteActivity.getStatus()) {
+                        out.print("1");
+                    } else {
+                        voteActivity.setStatus(false);
+                        out.print("0");
+                    }
                 }
                 break;
             case "Reset":

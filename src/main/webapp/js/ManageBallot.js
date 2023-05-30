@@ -30,12 +30,22 @@ function reset() {
 }
 
 function invoicing(){
-    $.ajax({
-        type: "POST",
-        url: "Invoicing",
-        data : {},
-        success: function (data) {
-            window.location.href="Index";
-        },
-    });
+    let invoice = confirm("確定進行開票？");
+    if (invoice) {
+        $.ajax({
+            type: "POST",
+            url: "Invoicing",
+            data : {},
+            success: function (response) {
+                if(response === "0"){
+                    alert("投票活動開票成功!");
+                    window.location.href="Index";
+                }
+                else if(response === "1"){
+                    alert("投票活動已開票");
+                    window.location.href="Index";
+                }
+            },
+        });
+    }
 }

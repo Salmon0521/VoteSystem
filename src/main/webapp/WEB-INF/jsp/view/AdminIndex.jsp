@@ -14,6 +14,10 @@
             <button class="button createVotingActivity" id="createActivity" onclick="editCandidate()"></button>
         </div>
         <div>
+            <div class="fs-label text-center">開票投票活動</div>
+            <button class="button createVotingActivity" id="invoicingActivity" onclick="invoicingActivity()"></button>
+        </div>
+        <div>
             <div class="fs-label text-center">查看投票結果</div>
             <button class="button report" id="ballotCondition"></button>
         </div>
