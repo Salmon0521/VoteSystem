@@ -29,9 +29,25 @@ function deleteCandidate(CandidateUUID) {
     });
 }
 
-function addVotingActivityTitle() {
+function updateVotingActivityTitle() {
     if (addTitleState === true) {
         addTitleState = false;
+        $("#addTitle").hide();
+        $("#reviseTitle").show();
+    }
+    else {
+        addTitleState = true;
+        $("#addTitle").show();
+        $("#reviseTitle").hide();
+    }
+}
+
+function addVotingActivityTitle() {
+    if (addTitleState === true) {
+        if ($("#title").val() === "") {
+            alert("請輸入投票活動標題");
+            return;
+        }
         $.ajax({
             url : "UpdateTitle",
             type : "POST",
@@ -42,15 +58,9 @@ function addVotingActivityTitle() {
                 $("#votingActivityTitle").text("投票活動標題: " + response);
                 $("#title").val("");
 
-                $("#addTitle").hide();
-                $("#reviseTitle").show();
+                updateVotingActivityTitle();
             }
         });
-    }
-    else {
-        addTitleState = true;
-        $("#addTitle").show();
-        $("#reviseTitle").hide();
     }
 }
 
@@ -60,18 +70,24 @@ function createVoteActivity() {
         type : "POST",
         data: {},
         success : function(response) {
+            console.log(response);
             if (response === "0") {
                 alert("投票活動建立成功!");
-                window.location.href = "ManageVoteActivity";
+                window.location.href = "Index";
             }
             else if (response === "1") {
-                alert("候選人至少需要一個");
-                window.location.reload();
+                alert("已存在投票活動");
+                window.location.href = "Index";
             }
             else if (response === "2") {
-                alert("已存在投票活動");
-                window.location.href = "ManageVoteActivity";
+                alert("投票活動名稱不得為空");
+                window.location.reload();
             }
+            else if (response === "3") {
+                alert("候選人至少一個");
+                window.location.reload();
+            }
+
         }
     })
 }

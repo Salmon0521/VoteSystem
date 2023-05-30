@@ -140,11 +140,14 @@ public class VotingController extends HttpServlet {
                         voteActivity.setStatus(true);
                         out.print("0");
                     }
-                    else {
-                        out.print("1");
+                    else if (voteActivity.getTitle() == null || voteActivity.getTitle().equals("")){
+                        out.print("2");
+                    }
+                    else if (voteActivity.getCandidates().size() == 0){
+                        out.print("3");
                     }
                 } else if (voteActivity.getStatus()) {
-                    out.print("2");
+                    out.print("1");
                 }
                 break;
             case "Vote":
