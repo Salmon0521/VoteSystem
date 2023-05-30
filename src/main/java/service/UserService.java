@@ -44,6 +44,15 @@ public class UserService {
         return users;
     }
 
+    public boolean checkAccount(String account) {
+        for (User user : users) {
+            if (user.getAccount().equals(account)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Integer login(String account, String password) {
         for (User user : users) {
             if (checkLogin(user, account, password)) {

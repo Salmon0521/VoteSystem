@@ -95,10 +95,6 @@ public class VotingController extends HttpServlet {
         PrintWriter out = response.getWriter();
         Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
-        if (privilege == null || privilege > 1) {
-            this.doGet(request, response);
-        }
-
         switch (path) {
             case "CheckLogin":
                 String account = request.getParameter("Account");
@@ -107,12 +103,18 @@ public class VotingController extends HttpServlet {
                 privilege = userService.login(account, password);
                 String UUID = userService.getUserBallotUUID(account);
 
-                request.getSession().setAttribute("account", account);
-                request.getSession().setAttribute("privilege", privilege);
-                request.getSession().setAttribute("UUID", UUID);
-
                 if (privilege == null) {
-                    out.print("error");
+                    if (userService.checkAccount(account)) {
+                        out.print("1");
+                    } else {
+                        out.print("2");
+                    }
+                }
+                else {
+                    request.getSession().setAttribute("account", account);
+                    request.getSession().setAttribute("privilege", privilege);
+                    request.getSession().setAttribute("UUID", UUID);
+                    out.print("0");
                 }
                 break;
             case "CheckVoting":
