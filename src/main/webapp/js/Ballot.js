@@ -80,6 +80,23 @@ function showList() {
     });
 }
 
-$(document).ready(function(){
+function showTitle() {
+    $.ajax({
+        url : "GetTitle",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            $("#votingActivityTitle").text("投票活動標題: " + response);
+        }
+    });
+}
+
+function init() {
     showList();
+    showTitle();
+}
+
+$(document).ready(function(){
+    init();
 });
