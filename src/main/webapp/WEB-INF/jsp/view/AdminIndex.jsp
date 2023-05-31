@@ -19,7 +19,7 @@
         </div>
         <div>
             <div class="fs-label text-center">查看投票結果</div>
-            <button class="button report" id="ballotCondition"></button>
+            <button class="button report" id="ballotCondition" onclick="window.location.href = 'VotingResult'"></button>
         </div>
     </div>
 </body>
