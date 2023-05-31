@@ -9,7 +9,7 @@ $(document).ready(function(){
                 document.getElementById("count").innerHTML = count;
             },
         });
-    }, 2000);
+    }, 1500);
 })
 
 clearInterval(interval)
