@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/index.css" />
-    <script src="js/Index.js"></script>
+    <script src="js/Result.js"></script>
 </head>
 
 <body class="background">
@@ -13,7 +13,7 @@
         <div class="fs-label">當前投票數：<font id="count">0</font></div>
         <div class="fs-label">總投票數：<font id="total">0</font></div>
     </div>
-    <table class="table">
+    <table class="ResultTable">
     </table>
 </body>
 </html>
