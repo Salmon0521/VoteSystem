@@ -27,7 +27,7 @@ import util.Utility;
         name = "VotingController",
         urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
                 "/EditBallot", "/CheckVoteActivity", "/GetTitle", "/UpdateTitle", "/GetCandidates", "/AddCandidate", "/DeleteCandidate",
-                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/VotingResult"}
+                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/GetResult", "/CheckResult", "/VotingResult"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -146,15 +146,13 @@ public class VotingController extends HttpServlet {
                 break;
             case "CreateVoteActivity":
                 if (!voteActivity.getStatus()) {
-                    if (voteActivity.getCandidates().size() > 0){
+                    if (voteActivity.getTitle() == null || voteActivity.getTitle().equals("")){
+                        out.print("2");
+                    } else if (voteActivity.getCandidates().size() == 0){
+                        out.print("3");
+                    } else{
                         voteActivity.setStatus(true);
                         out.print("0");
-                    }
-                    else if (voteActivity.getTitle() == null || voteActivity.getTitle().equals("")){
-                        out.print("2");
-                    }
-                    else if (voteActivity.getCandidates().size() == 0){
-                        out.print("3");
                     }
                 } else if (voteActivity.getStatus()) {
                     out.print("1");
@@ -242,6 +240,18 @@ public class VotingController extends HttpServlet {
             case "CountBallot":
                 int count = voteActivity.countBallot();
                 out.print(count);
+                break;
+            case "CheckResult":
+                if (voteActivity.getTitle().equals("")) {
+                    out.print("1");
+                } else {
+                    out.print("0");
+                }
+                break;
+            case "GetResult":
+                List<Candidate> test = voteActivity.getCandidates();
+                String tsetJson = new Gson().toJson(test);
+                out.print(tsetJson);
                 break;
         }
     }
