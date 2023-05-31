@@ -2,9 +2,7 @@ function viewBallot() {
     $.ajax({
         type : 'POST',
         url : 'CheckVoting',
-        data : {
-            "MeetingType" : this.id,
-        },
+        data : {},
         success: function (data) {
             if (data === "0") {
                 alert("投票活動尚未舉辦!");
@@ -12,6 +10,21 @@ function viewBallot() {
                 alert("已完成投票!");
             } else {
                 window.location.href = "BallotPage";
+            }
+        },
+    });
+}
+
+function viewResult() {
+    $.ajax({
+        type : 'POST',
+        url : 'CheckResult',
+        data : {},
+        success: function (data) {
+            if (data === "0") {
+                window.location.href = "VotingResult";
+            } else if (data === "1") {
+                alert("投票活動尚未舉辦!");
             }
         },
     });
