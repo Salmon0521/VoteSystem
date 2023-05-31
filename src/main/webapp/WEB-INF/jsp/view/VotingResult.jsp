@@ -15,10 +15,14 @@
             <div id="count" class="fs-label">當前投票數：<font >0</font></div>
             <div id="totalVoting" class="fs-label">總投票數：<font>0</font></div>
         </div>
-        <div id="ballot" class="fs-label"></div>
-        <h1>投票結果</h1>
+        <div>
+            <div id="ballot" class="fs-label"></div>
+
+        </div>
+        <h1>票選結果</h1>
         <table id="ResultTable">
         </table>
+        <button class="btn btn-secondary" id="download" onclick="">下載</button>
     </div>
 </body>
 </html>

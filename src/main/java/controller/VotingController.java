@@ -29,7 +29,8 @@ import static java.lang.Math.round;
         name = "VotingController",
         urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
                 "/EditBallot", "/CheckVoteActivity", "/GetTitle", "/UpdateTitle", "/GetCandidates", "/AddCandidate", "/DeleteCandidate",
-                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/GetResult", "/CheckResult", "/VotingResult"}
+                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/GetResult", "/CheckResult", "/VotingResult"
+                , "/GetBallot"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -246,7 +247,6 @@ public class VotingController extends HttpServlet {
                 int totalNum = userService.getUsers().size();
                 double votingRate = Math.round(countNum / (double) totalNum * 1000.0) / 10.0;
 
-
                 ballotData.put("countNum", String.valueOf(countNum));
                 ballotData.put("totalNum", String.valueOf(totalNum));
                 ballotData.put("votingRate", String.valueOf(votingRate) + "%");
@@ -272,7 +272,21 @@ public class VotingController extends HttpServlet {
                 } else {
                     out.print("1");
                 }
+                break;
+            case "GetBallot":
+                String userAccount = request.getSession().getAttribute("account").toString();
+                String UserBallotUUID = userService.getUserBallotUUID(userAccount);
 
+                if (UserBallotUUID == null) {
+                    response.setStatus(400);
+                } else {
+                    String candidateNameInBallot = voteActivity.getBallot(UserBallotUUID);
+                    if (candidateNameInBallot == null) {
+                        response.setStatus(500);
+                    } else {
+                        out.print(candidateNameInBallot);
+                    }
+                }
                 break;
         }
     }

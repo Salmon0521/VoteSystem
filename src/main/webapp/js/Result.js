@@ -12,6 +12,21 @@ function showTitle() {
     });
 }
 
+function showBallot() {
+    $.ajax({
+        url : "GetBallot",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            console.log(response);
+            if (response.status != 400 && response != 500) {
+                $("#ballot").text("您投的候選人: " + response);
+            }
+        }
+    });
+}
+
 function showList() {
     $.ajax({
         url : "GetResult",
@@ -19,7 +34,6 @@ function showList() {
         data: {},
         dataType : "json",
         success : function(response) {
-
             if (response === 1) {
                 alert("投票活動尚未舉辦!");
                 window.location.href="Index";
@@ -75,13 +89,14 @@ function countBallot() {
                 $("#totalVoting").text("總投票數： " + data["totalNum"]);
             },
         });
-    }, 1500);
+    }, 200);
 }
 
 clearInterval(interval)
 
 function init() {
     countBallot();
+    showBallot();
     showTitle();
     showList();
 }
