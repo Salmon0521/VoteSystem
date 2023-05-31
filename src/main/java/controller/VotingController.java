@@ -22,6 +22,8 @@ import java.util.Map;
 
 import util.Utility;
 
+import static java.lang.Math.round;
+
 
 @WebServlet(
         name = "VotingController",
@@ -239,8 +241,17 @@ public class VotingController extends HttpServlet {
                 out.print(candidatesJson);
                 break;
             case "CountBallot":
-                int count = voteActivity.countBallot();
-                out.print(count);
+                Map<String, String> ballotData = new LinkedHashMap<>();
+                int countNum = voteActivity.countBallot();
+                int totalNum = userService.getUsers().size();
+                double votingRate = Math.round(countNum / (double) totalNum * 1000.0) / 10.0;
+
+
+                ballotData.put("countNum", String.valueOf(countNum));
+                ballotData.put("totalNum", String.valueOf(totalNum));
+                ballotData.put("votingRate", String.valueOf(votingRate) + "%");
+                String ballotDataJson = new Gson().toJson(ballotData);
+                out.print(ballotDataJson);
                 break;
             case "CheckResult":
                 if (voteActivity.getTitle().equals("")) {
@@ -250,10 +261,18 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "GetResult":
-                List<Map<String, String>>  result = voteActivity.getResult();
-                String resultJson = new Gson().toJson(result);
-                System.out.println(resultJson);
-                out.print(resultJson);
+                if (!voteActivity.getTitle().equals("")) {
+                    if (!voteActivity.getStatus()) {
+                        List<Map<String, String>>  result = voteActivity.getResult();
+                        String resultJson = new Gson().toJson(result);
+                        out.print(resultJson);
+                    } else {
+                        out.print("2");
+                    }
+                } else {
+                    out.print("1");
+                }
+
                 break;
         }
     }

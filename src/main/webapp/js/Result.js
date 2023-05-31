@@ -19,35 +19,44 @@ function showList() {
         data: {},
         dataType : "json",
         success : function(response) {
-            console.log(response);
-            $("#ResultTable").append("<tr  class=\"row\">" +
-                "<th class=\"col-3\">候選人照片</th>" +
-                "<th class=\"col-3\">候選人姓名</th>" +
-                "<th class=\"col-3\">候選人得票數</th>" +
-                "<th class=\"col-3\">當選</th>" +
-                "</tr>"
-            );
-            let maxNum = response[0].count;
-            for (let i = 0; i < response.length; i++) {
-                if (i === 0 || response[i].count === maxNum) {
-                    $("#ResultTable").append(
-                        "<tr class=\"row\">" +
+
+            if (response === 1) {
+                alert("投票活動尚未舉辦!");
+                window.location.href="Index";
+            } else if (response === 2){
+                $("#ResultTable").append("<tr>" +
+                    "<th>投票活動尚未開票</th>" +
+                    "</tr>");
+            } else {
+                $("#ResultTable").append("<tr  class=\"row\">" +
+                    "<th class=\"col-3\">候選人照片</th>" +
+                    "<th class=\"col-3\">候選人姓名</th>" +
+                    "<th class=\"col-3\">候選人得票數</th>" +
+                    "<th class=\"col-3\">當選</th>" +
+                    "</tr>"
+                );
+                let maxNum = response[0].countNum;
+                for (let i = 0; i < response.length; i++) {
+                    if (i === 0 || response[i].count === maxNum) {
+                        $("#ResultTable").append(
+                            "<tr class=\"row\">" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<img src=\"img/candidateIMG/" + response[i].image + "\" width=\"100\" height=\"100\"/>" + "</td>" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].name + "</td>" +
-                            "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].count + "</td>" +
+                            "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].countNum + "</td>" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "O" + "</td>" +
-                        "</tr>"
-                    );
-                }
-                else {
-                    $("#ResultTable").append(
-                        "<tr class=\"row\">" +
+                            "</tr>"
+                        );
+                    }
+                    else {
+                        $("#ResultTable").append(
+                            "<tr class=\"row\">" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<img src=\"img/candidateIMG/" + response[i].image + "\" width=\"100\" height=\"100\"/>" + "</td>" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].name + "</td>" +
-                            "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].count + "</td>" +
+                            "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].countNum + "</td>" +
                             "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "X" + "</td>" +
-                        "</tr>"
-                    );
+                            "</tr>"
+                        );
+                    }
                 }
             }
         }
@@ -60,10 +69,10 @@ function countBallot() {
             type : 'POST',
             url : 'CountBallot',
             success: function (response) {
-                console.log(response);
-                // document.getElementById("count").innerHTML = response;
-                // $("#totalVoting").text("總投票數： " + response);
-
+                let data = JSON.parse(response);
+                $("#votingRate").text("當前投票率： " + data["votingRate"]);
+                $("#count").text("當前投票數： " + data["countNum"]);
+                $("#totalVoting").text("總投票數： " + data["totalNum"]);
             },
         });
     }, 1500);
@@ -72,9 +81,9 @@ function countBallot() {
 clearInterval(interval)
 
 function init() {
+    countBallot();
     showTitle();
     showList();
-    countBallot();
 }
 
 $(document).ready(function(){

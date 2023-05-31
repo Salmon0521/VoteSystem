@@ -75,7 +75,7 @@ public class VoteActivity {
             Map<String, String> candidateResult = new HashMap<>();
             candidateResult.put("name", candidate.getName());
             candidateResult.put("image", candidate.getImage());
-            candidateResult.put("count", "0");
+            candidateResult.put("countNum", "0");
             result.add(candidateResult);
         }
 
@@ -84,9 +84,9 @@ public class VoteActivity {
                 if (ballot.getCandidateUUID().equals(candidate.getUUID())) {
                     for (Map<String, String> candidateResult : result) {
                         if (candidateResult.get("name").equals(candidate.getName())) {
-                            int count = Integer.parseInt(candidateResult.get("count"));
+                            int count = Integer.parseInt(candidateResult.get("countNum"));
                             count++;
-                            candidateResult.put("count", String.valueOf(count));
+                            candidateResult.put("countNum", String.valueOf(count));
                             break;
                         }
                     }

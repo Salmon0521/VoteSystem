@@ -53,8 +53,9 @@ function countBallot() {
         $.ajax({
             type : 'POST',
             url : 'CountBallot',
-            success: function (count) {
-                document.getElementById("count").innerHTML = count;
+            success: function (response) {
+                let data = JSON.parse(response);
+                document.getElementById("count").innerHTML = data["countNum"];
             },
         });
     }, 1500);
