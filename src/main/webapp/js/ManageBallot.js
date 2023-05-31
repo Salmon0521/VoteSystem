@@ -1,19 +1,5 @@
 let interval;
 
-$(document).ready(function(){
-    interval = setInterval(function(){
-        $.ajax({
-            type : 'POST',
-            url : 'CountBallot',
-            success: function (count) {
-                document.getElementById("count").innerHTML = count;
-            },
-        });
-    }, 1500);
-})
-
-clearInterval(interval)
-
 function reset() {
     let reset = confirm("此操作會移除所有候選人資訊及投票紀錄");
     if (reset) {
@@ -49,3 +35,38 @@ function invoicing(){
         });
     }
 }
+
+function showTitle() {
+    $.ajax({
+        url : "GetTitle",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            $("#votingActivityTitle").text("投票活動標題: " + response);
+        }
+    });
+}
+
+function countBallot() {
+    interval = setInterval(function(){
+        $.ajax({
+            type : 'POST',
+            url : 'CountBallot',
+            success: function (count) {
+                document.getElementById("count").innerHTML = count;
+            },
+        });
+    }, 1500);
+}
+
+clearInterval(interval)
+
+function init() {
+    showTitle();
+    countBallot();
+}
+
+$(document).ready(function(){
+    init();
+});
