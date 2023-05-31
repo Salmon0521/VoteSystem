@@ -177,6 +177,7 @@ public class VotingController extends HttpServlet {
                         out.print("1");
                     } else {
                         voteActivity.setStatus(false);
+                        voteActivity.invoicing();
                         out.print("0");
                     }
                 }
@@ -249,9 +250,10 @@ public class VotingController extends HttpServlet {
                 }
                 break;
             case "GetResult":
-                List<Candidate> test = voteActivity.getCandidates();
-                String tsetJson = new Gson().toJson(test);
-                out.print(tsetJson);
+                List<Map<String, String>>  result = voteActivity.getResult();
+                String resultJson = new Gson().toJson(result);
+                System.out.println(resultJson);
+                out.print(resultJson);
                 break;
         }
     }

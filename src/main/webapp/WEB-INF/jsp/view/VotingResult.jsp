@@ -8,12 +8,16 @@
 </head>
 
 <body class="background">
-    <div class="mb-5">
-        <div class="fs-label">當前投票率：<font id="votingRate">0%</font></div>
-        <div class="fs-label">當前投票數：<font id="count">0</font></div>
-        <div class="fs-label">總投票數：<font id="total">0</font></div>
+    <div class="container mt-5 d-flex text-center flex-column">
+        <h1>投票結果</h1>
+        <div class="mb-5">
+            <label id="votingActivityTitle" class="fs-label">投票活動標題:</label>
+            <div id="votingRate" class="fs-label">當前投票率：<font >0%</font></div>
+            <div id="count" class="fs-label">當前投票數：<font >0</font></div>
+            <div id="totalVoting" class="fs-label">總投票數：<font>0</font></div>
+        </div>
+        <table id="ResultTable">
+        </table>
     </div>
-    <table class="ResultTable">
-    </table>
 </body>
 </html>
