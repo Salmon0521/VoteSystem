@@ -107,10 +107,10 @@ function showList() {
             );
             for (let i = 0; i < response.length; i++) {
                 $("#candidateTable").append("<tr id=\"" + response[i].uuid + "\" class=\"row\">" +
-                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
-                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].name + "</td>" +
-                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + response[i].introduction + "</td>" +
-                    "<td class=\"col-3 align-items-center d-flex justify-content-center\">" + "<input class=\"btn btn-danger\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-left\">" + "<img src=\"img/candidateIMG/" + response[i].uuid + ".png\" width=\"100\" height=\"100\"/>" + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-left\">" + response[i].name + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-left\">" + response[i].introduction + "</td>" +
+                    "<td class=\"col-3 align-items-center d-flex justify-content-left\">" + "<input class=\"btn btn-danger\" type=\"submit\" onclick=\"deleteCandidate('" + response[i].uuid + "')\" value=\"刪除\">" + "</td>" +
                     "</tr>"
                 );
             }

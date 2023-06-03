@@ -67,7 +67,7 @@ function showList() {
                                         "</div>" +
                                     "</div>" +
                                     "<div class=\"back d-flex justify-content-center\">" +
-                                        "<div class=\"card cardSize\">" + response[i].introduction + "</div>" +
+                                        "<div class=\"card cardSize d-flex align-items-center position-relative\"> <div class=\"text-center position-absolute card-content\">" + response[i].introduction + "</div></div>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +

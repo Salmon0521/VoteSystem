@@ -9,11 +9,11 @@
 
 <body class="background">
     <div class="container mt-5 d-flex text-center flex-column">
-        <div class="mb-5">
-            <label id="votingActivityTitle" class="fs-label">投票活動標題:</label>
-            <div id="votingRate" class="fs-label">當前投票率：<font >0%</font></div>
-            <div id="count" class="fs-label">當前投票數：<font >0</font></div>
-            <div id="totalVoting" class="fs-label">總投票數：<font>0</font></div>
+        <div class="mb-5 d-flex row">
+            <label id="votingActivityTitle" class="fs-label col-3">投票活動標題:</label>
+            <div id="votingRate" class="fs-label col-3">當前投票率：<font >0%</font></div>
+            <div id="count" class="fs-label col-3">當前投票數：<font >0</font></div>
+            <div id="totalVoting" class="fs-label col-3">總投票數：<font>0</font></div>
         </div>
         <div>
             <div id="ballot" class="fs-label"></div>
@@ -22,6 +22,8 @@
         <h1>票選結果</h1>
         <table id="ResultTable">
         </table>
+    </div>
+    <div class="d-flex justify-content-center">
         <button class="btn btn-secondary" id="download" onclick="">下載</button>
     </div>
 </body>
