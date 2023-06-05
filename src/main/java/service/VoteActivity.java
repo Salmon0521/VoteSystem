@@ -116,8 +116,8 @@ public class VoteActivity {
         Collections.sort(result, new Comparator<Map<String, String>>() {
             @Override
             public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
-                int count1 = Integer.parseInt(candidateResult1.get("count"));
-                int count2 = Integer.parseInt(candidateResult2.get("count"));
+                int count1 = Integer.parseInt(candidateResult1.get("countNum"));
+                int count2 = Integer.parseInt(candidateResult2.get("countNum"));
                 return count2 - count1;
             }
         });

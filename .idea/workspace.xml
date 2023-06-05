@@ -7,10 +7,8 @@
     <list default="true" id="5e273b31-c6f0-4df6-9bf0-0edad7933dd7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VotingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VotingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VoteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VoteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ManageBallot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/ManageBallot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Utility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +198,7 @@
       <workItem from="1682760839674" duration="647000" />
       <workItem from="1685441170998" duration="31741000" />
       <workItem from="1685784826233" duration="233000" />
-      <workItem from="1685959787703" duration="2993000" />
+      <workItem from="1685959787703" duration="5224000" />
     </task>
     <servers />
   </component>

@@ -13,16 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import util.Utility;
-
-import static java.lang.Math.round;
 
 
 @WebServlet(
@@ -189,8 +184,7 @@ public class VotingController extends HttpServlet {
                 if (privilege == 1) {
                     List<Candidate> candidates = voteActivity.getCandidates();
                     for (Candidate candidate : candidates) {
-                        File file = new File(servletPath + "img/candidateIMG/" + candidate.getImage());
-                        file.delete();
+                        Utility.deleteCandidateIMG(servletPath, candidate.getImage());
                     }
                     voteActivity.reset();
                     userService.resetUserVoted();
@@ -210,10 +204,7 @@ public class VotingController extends HttpServlet {
                 if (!part.getSubmittedFileName().equals("")) {
                     part.write(savePath + candidateData.get("image"));
                 } else {
-                    String sourcePath = servletPath + "img/candidate.png" ;
-                    File sourceFile = new File(sourcePath);
-                    File targetFile = new File(savePath + candidateData.get("image"));
-                    Files.copy(sourceFile.toPath(), targetFile.toPath());
+                    Utility.setDefaultCandidateIMG(servletPath, candidateData.get("image"));
                 }
 
                 voteActivity.addCandidate(candidateData);
@@ -221,11 +212,7 @@ public class VotingController extends HttpServlet {
                 break;
             case "DeleteCandidate":
                 String candidateUUID = request.getParameter("candidateUUID");
-                String targetFile = servletPath + "img/candidateIMG/" + candidateUUID + ".png";
-
-                Path targetFilePath = Paths.get(targetFile );
-                Files.deleteIfExists(targetFilePath);
-
+                Utility.deleteCandidateIMG(servletPath, candidateUUID + ".png");
                 voteActivity.deleteCandidate(candidateUUID);
                 break;
             case "UpdateTitle":
