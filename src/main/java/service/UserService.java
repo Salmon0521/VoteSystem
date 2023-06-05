@@ -102,6 +102,7 @@ public class UserService {
         for (User user : users) {
             if (user instanceof Participant) {
                 ((Participant) user).setVoted(false);
+                ((Participant) user).setBallotUUID("");
             }
         }
     }

@@ -30,6 +30,16 @@ function viewResult() {
     });
 }
 
+function reset() {
+    $.ajax({
+        type : 'POST',
+        url : 'Reset',
+        data : {},
+        success: function () {
+        },
+    });
+}
+
 function editCandidate() {
     $.ajax({
         type : 'POST',
@@ -39,6 +49,7 @@ function editCandidate() {
         },
         success: function (data) {
             if (data === "0") {
+                reset();
                 window.location.href = "EditBallot";
             } else if (data === "1") {
                 alert("已存在投票活動!");

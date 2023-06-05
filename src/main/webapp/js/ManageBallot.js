@@ -58,7 +58,7 @@ function countBallot() {
                 document.getElementById("count").innerHTML = data["countNum"];
             },
         });
-    }, 1500);
+    }, 200);
 }
 
 clearInterval(interval)

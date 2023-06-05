@@ -254,7 +254,7 @@ public class VotingController extends HttpServlet {
                 out.print(ballotDataJson);
                 break;
             case "CheckResult":
-                if (voteActivity.getTitle().equals("")) {
+                if (voteActivity.getTitle().equals("") || voteActivity.getCandidates().size() < 1) {
                     out.print("1");
                 } else {
                     out.print("0");

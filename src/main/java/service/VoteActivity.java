@@ -36,6 +36,7 @@ public class VoteActivity {
     public void reset() {
         ballots.removeAllBallot();
         candidates.removeAllCandidate();
+        result.clear();
         title = "";
         status = false;
     }
