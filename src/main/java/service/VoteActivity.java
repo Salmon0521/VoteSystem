@@ -5,9 +5,7 @@ import model.*;
 import java.util.*;
 
 public class VoteActivity {
-    private String id = "";
     private String title = "";
-    private String introduction = "";
     private boolean status = false;
     private Ballots ballots = new Ballots();
     private Candidates candidates = new Candidates();
