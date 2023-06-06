@@ -110,7 +110,14 @@ public class VoteActivity {
                 }
             }
         }
+        sortResult();
+    }
 
+    public List<Map<String, String>> getResult() {
+        return result;
+    }
+
+    private void sortResult () {
         Collections.sort(result, new Comparator<Map<String, String>>() {
             @Override
             public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
@@ -119,9 +126,5 @@ public class VoteActivity {
                 return count2 - count1;
             }
         });
-    }
-
-    public List<Map<String, String>> getResult() {
-        return result;
     }
 }
