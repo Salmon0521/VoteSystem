@@ -9,10 +9,10 @@ import java.util.List;
 
 
 public class UserService {
-    private UserDao userDao = new UserDaoImpl();
     private List<User> users;
 
     public UserService() {
+        UserDao userDao = new UserDaoImpl();
         users = userDao.getAllUsers();
     }
 
