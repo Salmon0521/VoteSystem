@@ -1,22 +1,22 @@
 package service;
 
-import Model.*;
+import model.*;
 
 import java.util.*;
 
 public class VoteActivity {
-    private String id = "";
-    private String name = "";
-    private String introduction = "";
-    private Date startTime = null;
-    private Date endTime = null;
+    private String title = "";
     private boolean status = false;
     private Ballots ballots = new Ballots();
     private Candidates candidates = new Candidates();
-    private List<Map<String, String>> result = new ArrayList<>();
+    private List<Map<String, String>> result =  new ArrayList<>();
 
-    public String vote(String voteData) {
-        return ballots.addBallot(voteData);
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public boolean getStatus() {
@@ -27,18 +27,61 @@ public class VoteActivity {
         this.status = status;
     }
 
-    public void reset() {
-        ballots.removeAllBallot();
-        candidates.removeAllCandidate();
-        status = false;
-    }
-
     public List<Candidate> getCandidates() {
         return candidates.getCandidates();
     }
 
-    public List<Ballot> getBallots() {
-        return ballots.getBallots();
+    public List<Map<String, String>> getResult() {
+        return result;
+    }
+
+    private void sortResult () {
+        Collections.sort(result, new Comparator<Map<String, String>>() {
+            @Override
+            public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
+                int count1 = Integer.parseInt(candidateResult1.get("countNum"));
+                int count2 = Integer.parseInt(candidateResult2.get("countNum"));
+                return count2 - count1;
+            }
+        });
+    }
+
+    public String vote(String voteData) {
+        return ballots.addBallot(voteData);
+    }
+
+    public void reset() {
+        ballots.removeAllBallot();
+        candidates.removeAllCandidate();
+        result.clear();
+        title = "";
+        status = false;
+    }
+
+    public String getVotedBallot(String ballotUUID) {
+        String candidateUUID = "";
+        for (Ballot ballot : ballots.getBallots()) {
+            if (ballot.getUUID().equals(ballotUUID)) {
+                candidateUUID = ballot.getCandidateUUID();
+                break;
+            }
+        }
+
+        for (Candidate candidate : candidates.getCandidates()) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                return candidate.getName();
+            }
+        }
+        return null;
+    }
+
+    public String getCandidateName(String candidateUUID) {
+        for (Candidate candidate : candidates.getCandidates()) {
+            if (candidate.getUUID().equals(candidateUUID)) {
+                return candidate.getName();
+            }
+        }
+        return null;
     }
 
     public int countBallot() {
@@ -57,4 +100,32 @@ public class VoteActivity {
             }
         }
     }
+
+    public void invoicing() {
+        for (Candidate candidate : candidates.getCandidates()) {
+            Map<String, String> candidateResult = new HashMap<>();
+            candidateResult.put("name", candidate.getName());
+            candidateResult.put("image", candidate.getImage());
+            candidateResult.put("countNum", "0");
+            result.add(candidateResult);
+        }
+
+        for (Ballot ballot : ballots.getBallots()) {
+            for (Candidate candidate : candidates.getCandidates()) {
+                if (ballot.getCandidateUUID().equals(candidate.getUUID())) {
+                    for (Map<String, String> candidateResult : result) {
+                        if (candidateResult.get("name").equals(candidate.getName())) {
+                            int count = Integer.parseInt(candidateResult.get("countNum"));
+                            count++;
+                            candidateResult.put("countNum", String.valueOf(count));
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        sortResult();
+    }
+
 }

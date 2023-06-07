@@ -10,9 +10,14 @@ function login() {
                 "Account": account,
                 "Password": password,
             },
-            success: function (data) {
-                if (data === "error") {
+            success: function (response) {
+                console.log(response.status);
+                if (response === "1") {
                     alert("帳號密碼錯誤!");
+                    window.location.href = "Login";
+                }
+                else if (response === "2"){
+                    alert("帳號為無效帳號");
                     window.location.href = "Login";
                 }
                 else {
