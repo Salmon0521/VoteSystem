@@ -16,7 +16,7 @@ public class Ballots {
         return ballot.getUUID();
     }
 
-    public int countBallots() {
+    public int numOfBallots() {
         return ballotList.size();
     }
 

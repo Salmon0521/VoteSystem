@@ -85,7 +85,7 @@ public class VoteActivity {
     }
 
     public int countBallot() {
-        return ballots.countBallots();
+        return ballots.numOfBallots();
     }
 
     public void addCandidate(Map<String, String> candidateData) {
