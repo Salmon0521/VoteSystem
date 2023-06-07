@@ -9,7 +9,7 @@ public class VoteActivity {
     private boolean status = false;
     private Ballots ballots = new Ballots();
     private Candidates candidates = new Candidates();
-    private List<Map<String, String>> result =  new ArrayList<>();
+    private Map<String, Map<String, String>> result = new LinkedHashMap<>();
 
     public String getTitle() {
         return title;
@@ -32,18 +32,20 @@ public class VoteActivity {
     }
 
     public List<Map<String, String>> getResult() {
-        return result;
+        return new ArrayList<>(result.values());
     }
 
     private void sortResult () {
-        Collections.sort(result, new Comparator<Map<String, String>>() {
-            @Override
-            public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
-                int count1 = Integer.parseInt(candidateResult1.get("countNum"));
-                int count2 = Integer.parseInt(candidateResult2.get("countNum"));
-                return count2 - count1;
-            }
+        List<Map.Entry<String, Map<String, String>>> list = new ArrayList<>(result.entrySet());
+        list.sort((o1, o2) -> {
+            int count1 = Integer.parseInt(o1.getValue().get("countNum"));
+            int count2 = Integer.parseInt(o2.getValue().get("countNum"));
+            return count2 - count1;
         });
+        result.clear();
+        for (Map.Entry<String, Map<String, String>> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
     }
 
     public String vote(String voteData) {
@@ -107,22 +109,16 @@ public class VoteActivity {
             candidateResult.put("name", candidate.getName());
             candidateResult.put("image", candidate.getImage());
             candidateResult.put("countNum", "0");
-            result.add(candidateResult);
+            result.put(candidate.getUUID(), candidateResult);
         }
 
         for (Ballot ballot : ballots.getBallots()) {
-            for (Candidate candidate : candidates.getCandidates()) {
-                if (ballot.getCandidateUUID().equals(candidate.getUUID())) {
-                    for (Map<String, String> candidateResult : result) {
-                        if (candidateResult.get("name").equals(candidate.getName())) {
-                            int count = Integer.parseInt(candidateResult.get("countNum"));
-                            count++;
-                            candidateResult.put("countNum", String.valueOf(count));
-                            break;
-                        }
-                    }
-                    break;
-                }
+            if (result.containsKey(ballot.getCandidateUUID())) {
+                Map<String, String> candidateResult = result.get(ballot.getCandidateUUID());
+                int count = Integer.parseInt(candidateResult.get("countNum"));
+                count++;
+                candidateResult.put("countNum", String.valueOf(count));
+                result.put(ballot.getCandidateUUID(), candidateResult);
             }
         }
         sortResult();
