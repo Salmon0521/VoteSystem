@@ -1,7 +1,7 @@
 package service;
 
-import Model.Ballot;
-import Model.Candidate;
+import model.Ballot;
+import model.Candidate;
 import org.junit.Assert;
 import service.VoteActivity;
 import org.junit.After;
@@ -64,28 +64,27 @@ public class VoteActivityTest {
     @Test
     public void VoteTest_1() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
+        String ballotUUID;
 
-        voteActivity.vote("123");
+        ballotUUID = voteActivity.vote("123");
         assertEquals(1, voteActivity.countBallot());
-        List<Ballot> ballots = voteActivity.getBallots();
-        assertEquals("123", ballots.get(0).getCandidateUUID());
+        String candidateName = voteActivity.getVotedBallot(ballotUUID);
+        assertEquals("123", candidateName);
     }
 
     @Test
     public void voteProcessTest() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
         UserService userService = new UserService();
-        List<Ballot> ballots;
 
         String ballotUUID = voteActivity.vote("abc");
         userService.updateUserVoted("100", ballotUUID);
 
-        ballots = voteActivity.getBallots();
+
         assertEquals(true, userService.getUserVoted("100"));
         assertEquals(ballotUUID, userService.getUserBallotUUID("100"));
         assertEquals(1, voteActivity.countBallot());
-        assertEquals(ballotUUID, ballots.get(0).getUUID());
-        assertEquals("abc", ballots.get(0).getCandidateUUID());
+        assertEquals("abc", voteActivity.getVotedBallot(ballotUUID));
     }
 
     @Test

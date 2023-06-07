@@ -1,7 +1,7 @@
 package service;
 
-import Model.Participant;
-import Model.User;
+import model.Participant;
+import model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

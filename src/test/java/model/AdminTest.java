@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,23 +19,10 @@ public class AdminTest {
 
     @Test
     public void AdminTest_1() throws  Exception {
-        Admin admin = new Admin("qwe", "123", 2, "abc@gmail.com");
+        Admin admin = new Admin("qwe", "123", 2);
 
         assertEquals("qwe", admin.getAccount());
         assertEquals("123", admin.getPassword());
         assertEquals(2, admin.getPrivilege());
-        assertEquals("abc@gmail.com", admin.getEmail());
-    }
-
-    @Test
-    public void AdminTest_2() throws  Exception {
-        Admin admin = new Admin("qwe", "123", 2, "abc@gmail.com");
-
-        assertEquals("qwe", admin.getAccount());
-        assertEquals("123", admin.getPassword());
-        assertEquals(2, admin.getPrivilege());
-        assertEquals("abc@gmail.com", admin.getEmail());
-        admin.setEmail("abc@yahoo.com");
-        assertEquals("abc@yahoo.com", admin.getEmail());
     }
 }

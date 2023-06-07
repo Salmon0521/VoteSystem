@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,29 +20,16 @@ public class ParticipantTest {
 
     @Test
     public void Participant_1() throws Exception {
-        Participant participant = new Participant("qwe", "123", 2, "abc@gmail.com");
+        Participant participant = new Participant("qwe", "123", 2);
 
         assertEquals("qwe", participant.getAccount());
         assertEquals("123", participant.getPassword());
         assertEquals(2, participant.getPrivilege());
-        assertEquals("abc@gmail.com", participant.getEmail());
-    }
-
-    @Test
-    public void Participant_2() throws  Exception {
-        Participant participant = new Participant("qwe", "123", 2, "abc@gmail.com");
-
-        assertEquals("qwe", participant.getAccount());
-        assertEquals("123", participant.getPassword());
-        assertEquals(2, participant.getPrivilege());
-        assertEquals("abc@gmail.com", participant.getEmail());
-        participant.setEmail("abc@yahoo.com");
-        assertEquals("abc@yahoo.com", participant.getEmail());
     }
 
     @Test
     public void setBallotUUIDTest_1() throws  Exception {
-        Participant participant = new Participant("qwe", "123", 2, "abc@gmail.com");
+        Participant participant = new Participant("qwe", "123", 2);
 
         assertEquals("", participant.getBallotUUID());
         participant.setBallotUUID("987");
@@ -51,7 +38,7 @@ public class ParticipantTest {
 
     @Test
     public void setVotedTest_1() throws  Exception {
-        Participant participant = new Participant("qwe", "123", 2, "abc@gmail.com");
+        Participant participant = new Participant("qwe", "123", 2);
 
         assertEquals(false, participant.getVoted());
         participant.setVoted(true);
