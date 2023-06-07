@@ -124,4 +124,8 @@ public class VoteActivity {
         sortResult();
     }
 
+    public boolean checkCandidatesIsNone() {
+        return candidates.getCandidates().size() == 0;
+    }
+
 }

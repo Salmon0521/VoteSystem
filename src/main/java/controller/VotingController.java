@@ -146,7 +146,7 @@ public class VotingController extends HttpServlet {
                 if (!voteActivity.getStatus()) {
                     if (voteActivity.getTitle() == null || voteActivity.getTitle().equals("")){
                         out.print("2");
-                    } else if (voteActivity.getCandidates().size() == 0){
+                    } else if (voteActivity.checkCandidatesIsNone()){
                         out.print("3");
                     } else{
                         voteActivity.setStatus(true);
