@@ -19,16 +19,35 @@ public class VoteActivity {
         this.title = title;
     }
 
-    public String vote(String voteData) {
-        return ballots.addBallot(voteData);
-    }
-
     public boolean getStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public List<Candidate> getCandidates() {
+        return candidates.getCandidates();
+    }
+
+    public List<Map<String, String>> getResult() {
+        return result;
+    }
+
+    private void sortResult () {
+        Collections.sort(result, new Comparator<Map<String, String>>() {
+            @Override
+            public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
+                int count1 = Integer.parseInt(candidateResult1.get("countNum"));
+                int count2 = Integer.parseInt(candidateResult2.get("countNum"));
+                return count2 - count1;
+            }
+        });
+    }
+
+    public String vote(String voteData) {
+        return ballots.addBallot(voteData);
     }
 
     public void reset() {
@@ -54,10 +73,6 @@ public class VoteActivity {
             }
         }
         return null;
-    }
-
-    public List<Candidate> getCandidates() {
-        return candidates.getCandidates();
     }
 
     public String getCandidateName(String candidateUUID) {
@@ -113,18 +128,4 @@ public class VoteActivity {
         sortResult();
     }
 
-    public List<Map<String, String>> getResult() {
-        return result;
-    }
-
-    private void sortResult () {
-        Collections.sort(result, new Comparator<Map<String, String>>() {
-            @Override
-            public int compare(Map<String, String> candidateResult1, Map<String, String> candidateResult2) {
-                int count1 = Integer.parseInt(candidateResult1.get("countNum"));
-                int count2 = Integer.parseInt(candidateResult2.get("countNum"));
-                return count2 - count1;
-            }
-        });
-    }
 }
