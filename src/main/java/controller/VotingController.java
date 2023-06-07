@@ -267,7 +267,7 @@ public class VotingController extends HttpServlet {
                 if (UserBallotUUID == null) {
                     response.setStatus(400);
                 } else {
-                    String candidateNameInBallot = voteActivity.getBallot(UserBallotUUID);
+                    String candidateNameInBallot = voteActivity.getVotedBallot(UserBallotUUID);
                     if (candidateNameInBallot == null) {
                         response.setStatus(500);
                     } else {

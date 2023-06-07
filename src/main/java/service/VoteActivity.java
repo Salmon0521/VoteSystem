@@ -39,7 +39,7 @@ public class VoteActivity {
         status = false;
     }
 
-    public String getBallot(String ballotUUID) {
+    public String getVotedBallot(String ballotUUID) {
         String candidateUUID = "";
         for (Ballot ballot : ballots.getBallots()) {
             if (ballot.getUUID().equals(ballotUUID)) {
