@@ -144,9 +144,9 @@ public class VotingController extends HttpServlet {
                 break;
             case "CreateVoteActivity":
                 if (!voteActivity.getStatus()) {
-                    if (voteActivity.getTitle() == null || voteActivity.getTitle().equals("")){
+                    if (voteActivity.getVoteActivityTitle() == null || voteActivity.getVoteActivityTitle().equals("")){
                         out.print("2");
-                    } else if (voteActivity.getCandidates().size() == 0){
+                    } else if (voteActivity.checkCandidatesIsNone()){
                         out.print("3");
                     } else{
                         voteActivity.setStatus(true);
@@ -217,11 +217,11 @@ public class VotingController extends HttpServlet {
                 break;
             case "UpdateTitle":
                 String voteActivityTitle = request.getParameter("votingActivityTitle");
-                voteActivity.setTitle(voteActivityTitle);
+                voteActivity.setVoteActivityTitle(voteActivityTitle);
                 out.print(voteActivityTitle);
                 break;
             case "GetTitle":
-                out.print(voteActivity.getTitle());
+                out.print(voteActivity.getVoteActivityTitle());
                 break;
             case "GetCandidates":
                 List<Candidate> candidates = voteActivity.getCandidates();
@@ -241,14 +241,14 @@ public class VotingController extends HttpServlet {
                 out.print(ballotDataJson);
                 break;
             case "CheckResult":
-                if (voteActivity.getTitle().equals("") || voteActivity.getCandidates().size() < 1) {
+                if (voteActivity.getVoteActivityTitle().equals("") || voteActivity.getCandidates().size() < 1) {
                     out.print("1");
                 } else {
                     out.print("0");
                 }
                 break;
             case "GetResult":
-                if (!voteActivity.getTitle().equals("")) {
+                if (!voteActivity.getVoteActivityTitle().equals("")) {
                     if (!voteActivity.getStatus()) {
                         List<Map<String, String>>  result = voteActivity.getResult();
                         String resultJson = new Gson().toJson(result);

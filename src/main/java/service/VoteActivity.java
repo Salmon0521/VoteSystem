@@ -11,11 +11,11 @@ public class VoteActivity {
     private Candidates candidates = new Candidates();
     private Map<String, Map<String, String>> result = new LinkedHashMap<>();
 
-    public String getTitle() {
+    public String getVoteActivityTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setVoteActivityTitle(String title) {
         this.title = title;
     }
 
@@ -122,6 +122,10 @@ public class VoteActivity {
             }
         }
         sortResult();
+    }
+
+    public boolean checkCandidatesIsNone() {
+        return candidates.getCandidates().size() == 0;
     }
 
 }
