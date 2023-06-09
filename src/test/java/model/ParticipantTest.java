@@ -28,12 +28,48 @@ public class ParticipantTest {
     }
 
     @Test
+    public void Participant_2() throws Exception {
+        Participant participant = new Participant("", "", 2);
+
+        assertEquals("", participant.getAccount());
+        assertEquals("", participant.getPassword());
+        assertEquals(2, participant.getPrivilege());
+    }
+
+    @Test
+    public void Participant_3() throws Exception {
+        Participant participant = new Participant(null, null, 0);
+
+        assertEquals(null, participant.getAccount());
+        assertEquals(null, participant.getPassword());
+        assertEquals(0, participant.getPrivilege());
+    }
+
+    @Test
     public void setBallotUUIDTest_1() throws  Exception {
         Participant participant = new Participant("qwe", "123", 2);
 
         assertEquals("", participant.getBallotUUID());
         participant.setBallotUUID("987");
         assertEquals("987", participant.getBallotUUID());
+    }
+
+    @Test
+    public void setBallotUUIDTest_2() throws  Exception {
+        Participant participant = new Participant("qwe", "123", 2);
+
+        assertEquals("", participant.getBallotUUID());
+        participant.setBallotUUID("");
+        assertEquals("", participant.getBallotUUID());
+    }
+
+    @Test
+    public void setBallotUUIDTest_3() throws  Exception {
+        Participant participant = new Participant("qwe", "123", 2);
+
+        assertEquals("", participant.getBallotUUID());
+        participant.setBallotUUID(null);
+        assertEquals(null, participant.getBallotUUID());
     }
 
     @Test

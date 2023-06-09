@@ -8,6 +8,7 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
+
 public class BallotTest {
     @Before
     public void setUp() throws Exception {
@@ -41,5 +42,15 @@ public class BallotTest {
     public void getCandidateUUIDTest_4() throws Exception {
         Ballot ballot1 = new Ballot(null);
         assertEquals(null, ballot1.getCandidateUUID());
+    }
+
+    @Test
+    public void setUUIDTest_1() throws Exception {
+        Ballot ballot1 = new Ballot("abc");
+
+        assertNotEquals(ballot1.getUUID(), "abc");
+        String uuid = ballot1.getUUID();
+        ballot1.setUUID();
+        assertNotEquals(uuid, ballot1.getUUID());
     }
 }

@@ -25,4 +25,22 @@ public class AdminTest {
         assertEquals("123", admin.getPassword());
         assertEquals(2, admin.getPrivilege());
     }
+
+    @Test
+    public void AdminTest_2() throws  Exception {
+        Admin admin = new Admin("", "", 0);
+
+        assertEquals("", admin.getAccount());
+        assertEquals("", admin.getPassword());
+        assertEquals(0, admin.getPrivilege());
+    }
+
+    @Test
+    public void AdminTest_3() throws  Exception {
+        Admin admin = new Admin(null, null, 0);
+
+        assertEquals(null, admin.getAccount());
+        assertEquals(null, admin.getPassword());
+        assertEquals(0, admin.getPrivilege());
+    }
 }
