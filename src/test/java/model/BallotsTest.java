@@ -17,71 +17,40 @@ public class BallotsTest {
     @After
     public void tearDown() throws Exception {
     }
-/*
-    @Test
-    public void countBallotsTest_1() throws Exception {
-        Ballots ballots = new Ballots();
-        ballots.addBallot("101");
-        assertEquals(1, ballots.countBallots("101"));
-    }
 
     @Test
-    public void countBallotsTest_2() throws Exception {
-        Ballots ballots = new Ballots();
-        assertEquals(0, ballots.countBallots("101"));
-    }
-
-    @Test
-    public void countBallotsTest_3() throws Exception {
-        Ballots ballots = new Ballots();
-        assertEquals(0, ballots.countBallots(null));
-    }
-
-    @Test (expected = NullPointerException.class)
-    public void countBallotsTest_4() throws Exception {
-        Ballots ballots = new Ballots();
-        ballots.addBallot(null);
-        assertEquals(1, ballots.countBallots(null));
-    }
-    @Test
-    public void countBallotsTest_5() throws Exception {
+    public void numOfBallotsTest_1() throws Exception {
         Ballots ballots = new Ballots();
 
         ballots.addBallot("101");
         ballots.addBallot("102");
         ballots.addBallot("103");
         ballots.addBallot("101");
-        assertEquals(2, ballots.countBallots("101"));
-    }
-
-    @Test
-    public void countBallotsTest_6() throws Exception {
-        Ballots ballots = new Ballots();
-
-        ballots.addBallot("");
-        assertEquals(1, ballots.countBallots(""));
-    }
-*/
-    @Test
-    public void countBallotsTest_7() throws Exception {
-        Ballots ballots = new Ballots();
-
-        ballots.addBallot("101");
-        ballots.addBallot("102");
-        ballots.addBallot("103");
-        ballots.addBallot("101");
-        assertEquals(4, ballots.countBallots());
+        assertEquals(4, ballots.numOfBallots());
         ballots.removeAllBallot();
-        assertEquals(0, ballots.countBallots());
+        assertEquals(0, ballots.numOfBallots());
+    }
+
+    @Test
+    public void numOfBallotsTest_2() throws Exception {
+        Ballots ballots = new Ballots();
+
+        assertEquals(0, ballots.numOfBallots());
+        ballots.removeAllBallot();
+        assertEquals(0, ballots.numOfBallots());
+        ballots.addBallot("101");
+        ballots.addBallot("102");
+        ballots.addBallot("101");
+        assertEquals(3, ballots.numOfBallots());
     }
 
     @Test
     public void getBallotsTest_1() throws Exception {
         Ballots ballots = new Ballots();
 
-        ballots.addBallot("101");
-        ballots.addBallot("102");
-        ballots.addBallot("103");
+        String ballotsUUID1 =  ballots.addBallot("101");
+        String ballotsUUID2 = ballots.addBallot("102");
+        String ballotsUUID3 = ballots.addBallot("103");
         List<Ballot> ballotList = ballots.getBallots();
 
         assertEquals("101", ballotList.get(0).getCandidateUUID());

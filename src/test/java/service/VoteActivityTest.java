@@ -64,28 +64,27 @@ public class VoteActivityTest {
     @Test
     public void VoteTest_1() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
+        String ballotUUID;
 
-        voteActivity.vote("123");
+        ballotUUID = voteActivity.vote("123");
         assertEquals(1, voteActivity.countBallot());
-        List<Ballot> ballots = voteActivity.getBallots();
-        assertEquals("123", ballots.get(0).getCandidateUUID());
+        String candidateName = voteActivity.getVotedBallot(ballotUUID);
+        assertEquals("123", candidateName);
     }
 
     @Test
     public void voteProcessTest() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
         UserService userService = new UserService();
-        List<Ballot> ballots;
 
         String ballotUUID = voteActivity.vote("abc");
         userService.updateUserVoted("100", ballotUUID);
 
-        ballots = voteActivity.getBallots();
+
         assertEquals(true, userService.getUserVoted("100"));
         assertEquals(ballotUUID, userService.getUserBallotUUID("100"));
         assertEquals(1, voteActivity.countBallot());
-        assertEquals(ballotUUID, ballots.get(0).getUUID());
-        assertEquals("abc", ballots.get(0).getCandidateUUID());
+        assertEquals("abc", voteActivity.getVotedBallot(ballotUUID));
     }
 
     @Test
@@ -109,4 +108,163 @@ public class VoteActivityTest {
         assertEquals(0, candidates.size());
         assertEquals(false, voteActivity.getStatus());
     }
+
+    @Test
+    public void setVoteActivityTitleTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+
+        voteActivity.setVoteActivityTitle("123");
+        assertEquals("123", voteActivity.getVoteActivityTitle());
+    }
+
+    @Test
+    public void setVoteActivityTitleTest_2() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+
+        voteActivity.setVoteActivityTitle("");
+        assertEquals("", voteActivity.getVoteActivityTitle());
+    }
+
+    @Test
+    public void setVoteActivityTitleTest_3() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+
+        voteActivity.setVoteActivityTitle(null);
+        assertEquals(null, voteActivity.getVoteActivityTitle());
+    }
+
+    @Test
+    public void getResultTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+        Map<String, String> candidate2 = new HashMap<>();
+        candidate2.put("uuid", "321");
+        candidate2.put("name", "cde");
+        candidate2.put("introduction", "456");
+        candidate2.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+        voteActivity.addCandidate(candidate2);
+        voteActivity.vote("123");
+        voteActivity.setStatus(true);
+
+        voteActivity.invoicing();
+        List<Map<String, String>> results = voteActivity.getResult();
+        for (Map<String, String> temp : results) {
+            if (temp.get("name").equals("abc")) {
+                assertEquals("1", temp.get("countNum"));
+            }
+            else if (temp.get("name").equals("cde")) {
+                assertEquals("0", temp.get("countNum"));
+            }
+        }
+    }
+
+    @Test
+    public void getVotedBallotTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+        String uuid = voteActivity.vote("123");
+        voteActivity.setStatus(true);
+
+        assertEquals("abc", voteActivity.getVotedBallot(uuid));
+    }
+
+    @Test
+    public void getCandidateNameTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+
+        assertEquals("abc", voteActivity.getCandidateName("123"));
+    }
+
+    @Test
+    public void getCandidateNameTest_2() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+
+        assertEquals(null, voteActivity.getCandidateName("321"));
+    }
+    @Test
+    public void countBallotTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+
+        assertEquals(0, voteActivity.countBallot());
+    }
+
+    @Test
+    public void countBallotTest_2() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+        voteActivity.vote("123");
+
+        assertEquals(1, voteActivity.countBallot());
+    }
+
+    @Test
+    public void countBallotTest_3() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
+        for (int i = 0; i < 10; i++) {
+            voteActivity.vote("123");
+        }
+
+        assertEquals(10, voteActivity.countBallot());
+    }
+
+    @Test
+    public void checkCandidatesIsNoneTest_1() throws Exception {
+        VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        assertEquals(true, voteActivity.checkCandidatesIsNone());
+        voteActivity.addCandidate(candidate1);
+        assertEquals(false, voteActivity.checkCandidatesIsNone());
+    }
+
 }
