@@ -89,6 +89,16 @@ public class UserServiceTest {
     }
 
     @Test
+    public void resetUserVotedTest_1() throws Exception {
+        UserService userService = new UserService();
+        assertEquals( false, userService.getUserVoted("100"));
+        userService.updateUserVoted("100", "123");
+        assertEquals( true, userService.getUserVoted("100"));
+        userService.resetUserVoted();
+        assertEquals( false, userService.getUserVoted("100"));
+    }
+
+    @Test
     public void resetUserVotedTest_2() throws Exception {
         UserService userService = new UserService();
         assertEquals( false, userService.getUserVoted("200"));
@@ -106,6 +116,24 @@ public class UserServiceTest {
         assertEquals( false, userService.getUserVoted("0"));
         userService.resetUserVoted();
         assertEquals( false, userService.getUserVoted("0"));
+    }
+
+    @Test
+    public void checkAccountTest_1() throws Exception {
+        UserService userService = new UserService();
+        assertEquals( true, userService.checkAccount("0"));
+    }
+
+    @Test
+    public void checkAccountTest_2() throws Exception {
+        UserService userService = new UserService();
+        assertEquals( true, userService.checkAccount("100"));
+    }
+
+    @Test
+    public void checkAccountTest_3() throws Exception {
+        UserService userService = new UserService();
+        assertEquals( false, userService.checkAccount("200"));
     }
 
 }
