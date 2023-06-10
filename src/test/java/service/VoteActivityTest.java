@@ -64,20 +64,33 @@ public class VoteActivityTest {
     @Test
     public void VoteTest_1() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
+
+        voteActivity.addCandidate(candidate1);
         String ballotUUID;
 
         ballotUUID = voteActivity.vote("123");
         assertEquals(1, voteActivity.countBallot());
         String candidateName = voteActivity.getVotedBallot(ballotUUID);
-        assertEquals("123", candidateName);
+        assertEquals("abc", candidateName);
     }
 
     @Test
     public void voteProcessTest() throws Exception {
         VoteActivity voteActivity = new VoteActivity();
         UserService userService = new UserService();
+        Map<String, String> candidate1 = new HashMap<>();
+        candidate1.put("uuid", "123");
+        candidate1.put("name", "abc");
+        candidate1.put("introduction", "456");
+        candidate1.put("image", "qwe");
 
-        String ballotUUID = voteActivity.vote("abc");
+        voteActivity.addCandidate(candidate1);
+        String ballotUUID = voteActivity.vote("123");
         userService.updateUserVoted("100", ballotUUID);
 
 
