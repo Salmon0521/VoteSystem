@@ -21,7 +21,7 @@ function sendBallot() {
                     "VoteData": VoteData,
                 },
                 success: function (data) {
-                    alert("投票成功!");
+                    alert("投票成功!\n候選人: " + data)
                     window.location.href = "Index";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -67,7 +67,7 @@ function showList() {
                                         "</div>" +
                                     "</div>" +
                                     "<div class=\"back d-flex justify-content-center\">" +
-                                        "<div class=\"card cardSize\">" + response[i].introduction + "</div>" +
+                                        "<div class=\"card cardSize d-flex align-items-center position-relative\"> <div class=\"text-center position-absolute card-content\">" + response[i].introduction + "</div></div>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
@@ -80,6 +80,23 @@ function showList() {
     });
 }
 
-$(document).ready(function(){
+function showTitle() {
+    $.ajax({
+        url : "GetTitle",
+        type : "POST",
+        data: {},
+        dataType : "json",
+        success : function(response) {
+            $("#votingActivityTitle").text("投票活動標題: " + response);
+        }
+    });
+}
+
+function init() {
     showList();
+    showTitle();
+}
+
+$(document).ready(function(){
+    init();
 });

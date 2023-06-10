@@ -11,15 +11,16 @@
 
  <body class="background">
     <div class="container d-flex align-items-center flex-column mb-5">
-      <table class="table">
-      </table>
-      <button
+        <label id="votingActivityTitle" class="fs-label">投票活動標題:</label>
+        <table class="table">
+        </table>
+        <button
         type="button"
         onclick="sendBallot()"
         class="btn btn-danger fs-label"
-      >
+        >
         送出選票
-      </button>
+        </button>
     </div>
     <script>
       document.querySelector(".card-flip").classList.toggle("flip");

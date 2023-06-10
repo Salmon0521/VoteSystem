@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +23,9 @@ import util.Utility;
 @WebServlet(
         name = "VotingController",
         urlPatterns = {"/Login", "/Logout", "/CheckLogin", "/CheckVoting", "/Index", "/BallotPage", "/CreateVoteActivity",
-                "/EditBallot", "/CheckVoteActivity", "/GetCandidates", "/AddCandidate", "/DeleteCandidate", "/ManageVoteActivity",
-                "/Invoicing", "/Vote", "/Reset", "/CountBallot"}
+                "/EditBallot", "/CheckVoteActivity", "/GetTitle", "/UpdateTitle", "/GetCandidates", "/AddCandidate", "/DeleteCandidate",
+                "/ManageVoteActivity", "/Invoicing", "/Vote", "/Reset", "/CountBallot", "/GetResult", "/CheckResult", "/VotingResult"
+                , "/GetBallot"}
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
@@ -78,6 +76,14 @@ public class VotingController extends HttpServlet {
                     response.sendRedirect(BASE_URL + "/Index");
                 }
                 break;
+            case "VotingResult":
+                if (privilege < 2){
+                    request.getRequestDispatcher("/WEB-INF/jsp/view/VotingResult.jsp").forward(request, response);
+                }
+                else {
+                    response.sendRedirect(BASE_URL + "/Index");
+                }
+                break;
             case "Login":
                 request.getRequestDispatcher("/WEB-INF/jsp/view/Login.jsp").forward(request, response);
                 break;
@@ -95,10 +101,6 @@ public class VotingController extends HttpServlet {
         PrintWriter out = response.getWriter();
         Integer privilege = (Integer) request.getSession().getAttribute("privilege");
 
-        if (privilege == null || privilege > 1) {
-            this.doGet(request, response);
-        }
-
         switch (path) {
             case "CheckLogin":
                 String account = request.getParameter("Account");
@@ -107,12 +109,18 @@ public class VotingController extends HttpServlet {
                 privilege = userService.login(account, password);
                 String UUID = userService.getUserBallotUUID(account);
 
-                request.getSession().setAttribute("account", account);
-                request.getSession().setAttribute("privilege", privilege);
-                request.getSession().setAttribute("UUID", UUID);
-
                 if (privilege == null) {
-                    out.print("error");
+                    if (userService.checkAccount(account)) {
+                        out.print("1");
+                    } else {
+                        out.print("2");
+                    }
+                }
+                else {
+                    request.getSession().setAttribute("account", account);
+                    request.getSession().setAttribute("privilege", privilege);
+                    request.getSession().setAttribute("UUID", UUID);
+                    out.print("0");
                 }
                 break;
             case "CheckVoting":
@@ -136,15 +144,16 @@ public class VotingController extends HttpServlet {
                 break;
             case "CreateVoteActivity":
                 if (!voteActivity.getStatus()) {
-                    if (voteActivity.getCandidates().size() > 0){
+                    if (voteActivity.getVoteActivityTitle() == null || voteActivity.getVoteActivityTitle().equals("")){
+                        out.print("2");
+                    } else if (voteActivity.checkCandidatesIsNone()){
+                        out.print("3");
+                    } else{
                         voteActivity.setStatus(true);
                         out.print("0");
                     }
-                    else {
-                        out.print("1");
-                    }
                 } else if (voteActivity.getStatus()) {
-                    out.print("2");
+                    out.print("1");
                 }
                 break;
             case "Vote":
@@ -157,19 +166,25 @@ public class VotingController extends HttpServlet {
                     String ballotUUID = voteActivity.vote(VoteData);
                     userService.updateUserVoted((String) request.getSession().getAttribute("account"), ballotUUID);
                     request.getSession().setAttribute("UUID", ballotUUID);
+                    out.print(voteActivity.getCandidateName(VoteData));
                 }
                 break;
             case "Invoicing":
                 if (privilege == 1) {
-                    voteActivity.setStatus(false);
+                    if (!voteActivity.getStatus()) {
+                        out.print("1");
+                    } else {
+                        voteActivity.setStatus(false);
+                        voteActivity.invoicing();
+                        out.print("0");
+                    }
                 }
                 break;
             case "Reset":
                 if (privilege == 1) {
                     List<Candidate> candidates = voteActivity.getCandidates();
                     for (Candidate candidate : candidates) {
-                        File file = new File(servletPath + "img/candidateIMG/" + candidate.getImage());
-                        file.delete();
+                        Utility.deleteCandidateIMG(servletPath, candidate.getImage());
                     }
                     voteActivity.reset();
                     userService.resetUserVoted();
@@ -189,10 +204,7 @@ public class VotingController extends HttpServlet {
                 if (!part.getSubmittedFileName().equals("")) {
                     part.write(savePath + candidateData.get("image"));
                 } else {
-                    String sourcePath = servletPath + "img/candidate.png" ;
-                    File sourceFile = new File(sourcePath);
-                    File targetFile = new File(savePath + candidateData.get("image"));
-                    Files.copy(sourceFile.toPath(), targetFile.toPath());
+                    Utility.setDefaultCandidateIMG(servletPath, candidateData.get("image"));
                 }
 
                 voteActivity.addCandidate(candidateData);
@@ -200,12 +212,16 @@ public class VotingController extends HttpServlet {
                 break;
             case "DeleteCandidate":
                 String candidateUUID = request.getParameter("candidateUUID");
-                String targetFile = servletPath + "img/candidateIMG/" + candidateUUID + ".png";
-
-                Path targetFilePath = Paths.get(targetFile );
-                Files.deleteIfExists(targetFilePath);
-
+                Utility.deleteCandidateIMG(servletPath, candidateUUID + ".png");
                 voteActivity.deleteCandidate(candidateUUID);
+                break;
+            case "UpdateTitle":
+                String voteActivityTitle = request.getParameter("votingActivityTitle");
+                voteActivity.setVoteActivityTitle(voteActivityTitle);
+                out.print(voteActivityTitle);
+                break;
+            case "GetTitle":
+                out.print(voteActivity.getVoteActivityTitle());
                 break;
             case "GetCandidates":
                 List<Candidate> candidates = voteActivity.getCandidates();
@@ -213,8 +229,51 @@ public class VotingController extends HttpServlet {
                 out.print(candidatesJson);
                 break;
             case "CountBallot":
-                int count = voteActivity.countBallot();
-                out.print(count);
+                Map<String, String> ballotData = new LinkedHashMap<>();
+                int countNum = voteActivity.countBallot();
+                int totalNum = userService.getUsers().size();
+                double votingRate = Math.round(countNum / (double) totalNum * 1000.0) / 10.0;
+
+                ballotData.put("countNum", String.valueOf(countNum));
+                ballotData.put("totalNum", String.valueOf(totalNum));
+                ballotData.put("votingRate", String.valueOf(votingRate) + "%");
+                String ballotDataJson = new Gson().toJson(ballotData);
+                out.print(ballotDataJson);
+                break;
+            case "CheckResult":
+                if (voteActivity.getVoteActivityTitle().equals("") || voteActivity.getCandidates().size() < 1) {
+                    out.print("1");
+                } else {
+                    out.print("0");
+                }
+                break;
+            case "GetResult":
+                if (!voteActivity.getVoteActivityTitle().equals("")) {
+                    if (!voteActivity.getStatus()) {
+                        List<Map<String, String>>  result = voteActivity.getResult();
+                        String resultJson = new Gson().toJson(result);
+                        out.print(resultJson);
+                    } else {
+                        out.print("2");
+                    }
+                } else {
+                    out.print("1");
+                }
+                break;
+            case "GetBallot":
+                String userAccount = request.getSession().getAttribute("account").toString();
+                String UserBallotUUID = userService.getUserBallotUUID(userAccount);
+
+                if (UserBallotUUID == null) {
+                    response.setStatus(400);
+                } else {
+                    String candidateNameInBallot = voteActivity.getVotedBallot(UserBallotUUID);
+                    if (candidateNameInBallot == null) {
+                        response.setStatus(500);
+                    } else {
+                        out.print(candidateNameInBallot);
+                    }
+                }
                 break;
         }
     }
