@@ -24,7 +24,7 @@
         </table>
     </div>
     <div class="d-flex justify-content-center">
-        <button class="btn btn-secondary" id="download" onclick="alert('下載功能尚未開發')">下載</button>
+        <button class="btn btn-secondary" id="download" style="display: none;" onclick="alert('下載功能尚未開發')">下載</button>
     </div>
 </body>
 </html>
