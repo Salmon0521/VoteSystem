@@ -29,7 +29,7 @@ import util.Utility;
 )
 @MultipartConfig
 public class VotingController extends HttpServlet {
-    private static final String BASE_URL = "/web-meeting-java";
+    private static final String BASE_URL = "/VoteSystem";
     UserService userService = new UserService();
     VoteActivity voteActivity = new VoteActivity();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -152,7 +152,7 @@ public class VotingController extends HttpServlet {
                         voteActivity.setStatus(true);
                         out.print("0");
                     }
-                } else if (voteActivity.getStatus()) {
+                } else {
                     out.print("1");
                 }
                 break;

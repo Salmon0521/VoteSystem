@@ -17,7 +17,6 @@
         </div>
         <div>
             <div id="ballot" class="fs-label"></div>
-
         </div>
         <h1>票選結果</h1>
         <table id="ResultTable">

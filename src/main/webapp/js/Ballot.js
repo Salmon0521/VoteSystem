@@ -85,16 +85,16 @@ function showTitle() {
         url : "GetTitle",
         type : "POST",
         data: {},
-        dataType : "json",
         success : function(response) {
+            console.log(response);
             $("#votingActivityTitle").text("投票活動標題: " + response);
         }
     });
 }
 
 function init() {
-    showList();
     showTitle();
+    showList();
 }
 
 $(document).ready(function(){

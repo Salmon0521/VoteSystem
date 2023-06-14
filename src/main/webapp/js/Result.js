@@ -5,7 +5,6 @@ function showTitle() {
         url : "GetTitle",
         type : "POST",
         data: {},
-        dataType : "json",
         success : function(response) {
             $("#votingActivityTitle").text("投票活動標題: " + response);
         }
@@ -17,7 +16,6 @@ function showBallot() {
         url : "GetBallot",
         type : "POST",
         data: {},
-        dataType : "json",
         success : function(response) {
             console.log(response);
             if (response.status != 400 && response != 500) {
