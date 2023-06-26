@@ -17,7 +17,7 @@
         </div>
         <div>
             <button class="btn btn-secondary" id="invoicing" onclick="invoicing()">開票</button>
-            <button class="btn btn-danger id="reset" onclick="reset()">重置</button>
+            <button class="btn btn-danger" id="reset" onclick="reset()">重置</button>
         </div>
     </div>
 </body>
